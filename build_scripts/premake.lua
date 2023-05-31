@@ -162,24 +162,23 @@ function runtime_project_configuration()
         }
 
         -- Source to ignore
-		removefiles(API_EXCLUDES[ARG_API_GRAPHICS])
+        removefiles(API_EXCLUDES[ARG_API_GRAPHICS])
 		
         -- Precompiled header
         pchheader "pch.h"
         pchsource "../runtime/Core/pch.cpp"
 
         -- Includes
-        includedirs { "../third_party/" }
-        includedirs { "../third_party/assimp" }
+        includedirs { "../third_party/dxc-linux/dxc-artifacts/include" }
         includedirs { "../third_party/bullet" }
         includedirs { "../third_party/fmod" }
         includedirs { "../third_party/free_image" }
         includedirs { "../third_party/free_type" }
         includedirs { "../third_party/compressonator" }
         includedirs { "../third_party/renderdoc" }
-        includedirs { "../third_party/pugixml" }
+        includedirs { "../third_party/fsr2" }
+        includedirs { "../runtime/Core" } -- This is here because clang needs the full pre-compiled header path
         includedirs(API_INCLUDES[ARG_API_GRAPHICS] or {})
-		includedirs { "../runtime/Core" } -- This is here because clang needs the full pre-compiled header path
 
         -- Libraries
         libdirs (LIBRARY_DIR)
@@ -188,29 +187,29 @@ function runtime_project_configuration()
         filter "configurations:release"
             debugdir (TARGET_DIR)
             targetdir (TARGET_DIR)
-            links { "dxcompiler" }
-            links { "assimp" }
-            links { "fmod_vc" }
-            links { "FreeImageLib" }
-            links { "freetype" }
-            links { "BulletCollision", "BulletDynamics", "BulletSoftBody", "LinearMath" }
-            links { "SDL2.lib" }
-            links { "Compressonator_MT.lib" }
+--NIKOS            links { "dxcompiler" }
+--NIKOS            links { "assimp" }
+--NIKOS            links { "fmod_vc" }
+--NIKOS            links { "FreeImageLib" }
+--NIKOS            links { "freetype" }
+--NIKOS            links { "BulletCollision", "BulletDynamics", "BulletSoftBody", "LinearMath" }
+--NIKOS            links { "SDL2.lib" }
+--NIKOS            links { "Compressonator_MT.lib" }
 			links(API_LIBRARIES[ARG_API_GRAPHICS].release or {})
 			
         -- "Debug"
         filter "configurations:debug"
             debugdir (TARGET_DIR)
             targetdir (TARGET_DIR)
-            links { "dxcompiler" }
-            links { "assimp_debug" }
-            links { "fmodL_vc" }
-            links { "FreeImageLib_debug" }
-            links { "freetype_debug" }
-            links { "BulletCollision_debug", "BulletDynamics_debug", "BulletSoftBody_debug", "LinearMath_debug" }
-            links { "SDL2_debug.lib" }
-            links { "Compressonator_MT_debug.lib" }
-            links(API_LIBRARIES[ARG_API_GRAPHICS].debug or {})
+--NIKOS            links { "dxcompiler" }
+--NIKOS            links { "assimp_debug" }
+--NIKOS            links { "fmodL_vc" }
+--NIKOS            links { "FreeImageLib_debug" }
+--NIKOS            links { "freetype_debug" }
+--NIKOS            links { "BulletCollision_debug", "BulletDynamics_debug", "BulletSoftBody_debug", "LinearMath_debug" }
+--NIKOS            links { "SDL2_debug.lib" }
+--NIKOS            links { "Compressonator_MT_debug.lib" }
+--NIKOS            links(API_LIBRARIES[ARG_API_GRAPHICS].debug or {})
 end
 
 function editor_project_configuration()
