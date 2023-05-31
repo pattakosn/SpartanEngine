@@ -171,6 +171,7 @@ function runtime_project_configuration()
         -- Includes
         includedirs { "../third_party/" }
         includedirs { "../third_party/assimp" }
+        includedirs { "../third_party/dxc-linux/dxc-artifacts/include" }
         includedirs { "../third_party/bullet" }
         includedirs { "../third_party/fmod" }
         includedirs { "../third_party/free_image" }
