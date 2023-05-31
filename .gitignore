@@ -255,3 +255,6 @@ ModelManifest.xml
 
 # Rider IDE config dir
 .idea/
+
+# Ignore Makefiles
+*Makefile
