@@ -27,8 +27,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "../RHI_CommandList.h"
 #include "../../Rendering/Renderer.h"
 #include "../../Profiling/Profiler.h"
-#include "sdl/SDL_video.h"
-#include "sdl/SDL_syswm.h"
+#include "SDL2/SDL_video.h"
+#include "SDL2/SDL_syswm.h"
 //===================================
 
 //= NAMESPACES ================

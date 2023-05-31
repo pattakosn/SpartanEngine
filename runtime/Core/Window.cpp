@@ -22,8 +22,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //= INCLUDES =====================
 #include "pch.h"
 #include "Window.h"
-#include "sdl/SDL.h"
-#include "sdl/SDL_syswm.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_syswm.h"
 #include "../Input/Input.h"
 #include "../Display/Display.h"
 #include "../Rendering/Renderer.h"
@@ -324,6 +324,7 @@ namespace Spartan
         return m_window;
     }
 
+#ifdef _WIN32
     void* Window::GetHandleRaw()
     {
         SDL_SysWMinfo wmInfo;
@@ -331,6 +332,7 @@ namespace Spartan
         SDL_GetWindowWMInfo(m_window, &wmInfo);
         return static_cast<void*>(wmInfo.info.win.window);
     }
+#endif
 
     bool Window::WantsToClose()
     {
