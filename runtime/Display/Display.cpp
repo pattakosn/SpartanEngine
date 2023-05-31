@@ -51,7 +51,7 @@ namespace Spartan
         *is_hdr_capable           = false;
         *max_luminance = 0.0f;
 
-        #if defined(_MSC_VER)
+        #if defined(_WIN32)
             // Create DXGI factory
             Microsoft::WRL::ComPtr<IDXGIFactory6> factory;
             if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory))))
