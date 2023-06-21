@@ -24,7 +24,7 @@ RUNTIME_PROJECT_NAME = "runtime"
 EXECUTABLE_NAME      = "spartan"
 EDITOR_DIR           = "../" .. EDITOR_PROJECT_NAME
 RUNTIME_DIR          = "../" .. RUNTIME_PROJECT_NAME
-LIBRARY_DIR          = "../third_party/libraries"
+--LIBRARY_DIR          = "../third_party/libraries"
 OBJ_DIR              = "../binaries/obj"
 TARGET_DIR           = "../binaries"
 API_CPP_DEFINE		 = ""
@@ -188,12 +188,12 @@ function runtime_project_configuration()
             debugdir (TARGET_DIR)
             targetdir (TARGET_DIR)
 --NIKOS            links { "dxcompiler" }
---NIKOS            links { "assimp" }
+            links { "assimp" }
 --NIKOS            links { "fmod_vc" }
---NIKOS            links { "FreeImageLib" }
---NIKOS            links { "freetype" }
+            links { "freeimage" }
+            links { "freetype" }
 --NIKOS            links { "BulletCollision", "BulletDynamics", "BulletSoftBody", "LinearMath" }
---NIKOS            links { "SDL2.lib" }
+            links { "SDL2" }
 --NIKOS            links { "Compressonator_MT.lib" }
 			links(API_LIBRARIES[ARG_API_GRAPHICS].release or {})
 			
@@ -202,14 +202,14 @@ function runtime_project_configuration()
             debugdir (TARGET_DIR)
             targetdir (TARGET_DIR)
 --NIKOS            links { "dxcompiler" }
---NIKOS            links { "assimp_debug" }
+            links { "assimp" }
 --NIKOS            links { "fmodL_vc" }
---NIKOS            links { "FreeImageLib_debug" }
---NIKOS            links { "freetype_debug" }
+            links { "freeimagelib" }
+            links { "freetype" }
 --NIKOS            links { "BulletCollision_debug", "BulletDynamics_debug", "BulletSoftBody_debug", "LinearMath_debug" }
---NIKOS            links { "SDL2_debug.lib" }
+            links { "SDL2" }
 --NIKOS            links { "Compressonator_MT_debug.lib" }
---NIKOS            links(API_LIBRARIES[ARG_API_GRAPHICS].debug or {})
+            links(API_LIBRARIES[ARG_API_GRAPHICS].debug or {})
 end
 
 function editor_project_configuration()
@@ -240,7 +240,7 @@ function editor_project_configuration()
         includedirs { RUNTIME_DIR }
         includedirs { RUNTIME_DIR .. "/Core" }     -- This is here because the runtime uses it
         includedirs { "../third_party/free_type" } -- Used to rasterise the ImGui font atlas
-        includedirs { "../third_party" }       	   -- SDL, used by ImGui to create windows
+--NIKOS        includedirs { "../third_party" }       	   -- SDL, used by ImGui to create windows
 
         -- Libraries
         libdirs (LIBRARY_DIR)
@@ -251,18 +251,18 @@ function editor_project_configuration()
             targetdir (TARGET_DIR)
             debugdir (TARGET_DIR)
             links { "freetype" }
-            links { "SDL2" }
+--NIKOS            links { "SDL2" }
 
         -- "Debug"
         filter "configurations:debug"
             targetname ( EXECUTABLE_NAME .. "_debug" )
             targetdir (TARGET_DIR)
             debugdir (TARGET_DIR)
-            links { "freetype_debug" }
-            links { "SDL2_debug" }
+--NIKOS            links { "freetype_debug" }
+--NIKOS            links { "SDL2_debug" }
 end
 
 configure_graphics_api()
 solution_configuration()
 runtime_project_configuration()
-editor_project_configuration()
+--NIKOS editor_project_configuration()

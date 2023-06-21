@@ -51,9 +51,6 @@ namespace Spartan
         m_enabled         = true;
     }
 
-    template <typename T>
-    inline constexpr ComponentType Component::TypeToEnum() { return ComponentType::Undefined; }
-
     shared_ptr<Transform> Component::GetTransform() const
     {
         return GetEntityPtr()->GetComponent<Transform>();

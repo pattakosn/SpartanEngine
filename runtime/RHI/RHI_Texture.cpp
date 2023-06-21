@@ -58,6 +58,10 @@ namespace Spartan
             case RHI_Format::ASTC:
                 format_amd = CMP_FORMAT::CMP_FORMAT_ASTC;
                 break;
+
+            default:
+                assert(false && "unknown amd format");
+                break;
         }
 
         SP_ASSERT(format_amd != CMP_FORMAT::CMP_FORMAT_Unknown);

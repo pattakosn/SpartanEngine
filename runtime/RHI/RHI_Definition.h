@@ -26,6 +26,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <cassert>
 #include <string>
 #include "../Rendering/Color.h"
+#include <limits>
+#include <cstdint>
 //=============================
 
 // Declarations
@@ -125,7 +127,7 @@ namespace Spartan
         Undefined
     };
 
-    enum class RHI_CullMode
+    enum class RHI_CullMode : int
     {
         None,
         Front,
@@ -363,9 +365,9 @@ namespace Spartan
             case RHI_Format::R16G16B16A16_Snorm: return 16;
             case RHI_Format::R16G16B16A16_Float: return 16;
             case RHI_Format::R32G32B32A32_Float: return 32;
+            default:                             assert(false && "Unsupported format");
         }
 
-        assert(false && "Unsupported format");
         return 0;
     }
 
@@ -392,9 +394,9 @@ namespace Spartan
             case RHI_Format::R16G16B16A16_Float: return 4;
             case RHI_Format::R32G32B32A32_Float: return 4;
             case RHI_Format::D32_Float:          return 1;
+            default:                             assert(false && "Unsupported format");
         }
 
-        assert(false && "Unsupported format");
         return 0;
     }
 
@@ -424,9 +426,9 @@ namespace Spartan
             case RHI_Format::D32_Float_S8X24_Uint: return "RHI_Format_D32_Float_S8X24_Uint";
             case RHI_Format::BC7:                  return "RHI_Format_BC7";
             case RHI_Format::Undefined:            return "RHI_Format_Undefined";
+            default:                               assert(false && "Unsupported format");
         }
 
-        assert(false && "Unsupported format");
         return "";
     }
 

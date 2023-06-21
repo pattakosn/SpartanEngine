@@ -270,6 +270,8 @@ namespace Spartan::vulkan_utility
                 case VK_ACCESS_HOST_WRITE_BIT:
                     stages |= VK_PIPELINE_STAGE_HOST_BIT;
                     break;
+                default:
+                    assert(false && "Unhandled flag");
                 }
             }
             return stages;

@@ -230,7 +230,7 @@ namespace Spartan
         if (it == pipelines.end())
         {
             // Create a new pipeline
-            it = pipelines.emplace(make_pair(hash, move(make_shared<RHI_Pipeline>(pso, m_descriptor_layout_current)))).first;
+            it = pipelines.emplace(make_pair(hash, std::move(make_shared<RHI_Pipeline>(pso, m_descriptor_layout_current)))).first;
             SP_LOG_INFO("A new pipeline has been created.");
         }
 

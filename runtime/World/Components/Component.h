@@ -89,7 +89,8 @@ namespace Spartan
 
         //= TYPE ===================================
         template <typename T>
-        static constexpr ComponentType TypeToEnum();
+        static inline constexpr ComponentType TypeToEnum() { return ComponentType::Undefined; }
+
         //==========================================
 
         //= PROPERTIES ==============================================================
