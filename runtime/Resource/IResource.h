@@ -115,7 +115,7 @@ namespace Spartan
 
         // Type
         template <typename T>
-        static constexpr ResourceType TypeToEnum();
+        static inline ResourceType TypeToEnum() { return ResourceType::Unknown; }
 
     protected:
         ResourceType m_resource_type         = ResourceType::Unknown;
