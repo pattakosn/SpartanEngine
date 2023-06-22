@@ -169,8 +169,8 @@ function runtime_project_configuration()
         pchsource "../runtime/Core/pch.cpp"
 
         -- Includes
-        includedirs { "../third_party/" }
-        includedirs { "../third_party/assimp" }
+--NIKOS        includedirs { "../third_party/" }
+--NIKOS        includedirs { "../third_party/assimp" }
         includedirs { "../third_party/dxc-linux/dxc-artifacts/include" }
         includedirs { "../third_party/bullet" }
         includedirs { "../third_party/fmod" }
@@ -178,7 +178,8 @@ function runtime_project_configuration()
         includedirs { "../third_party/free_type" }
         includedirs { "../third_party/compressonator" }
         includedirs { "../third_party/renderdoc" }
-        includedirs { "../third_party/pugixml" }
+        includedirs { "../third_party/fsr2" }
+--NIKOS        includedirs { "../third_party/pugixml" }
         includedirs(API_INCLUDES[ARG_API_GRAPHICS] or {})
         includedirs { "../runtime/Core" } -- This is here because clang needs the full pre-compiled header path
 
@@ -242,7 +243,7 @@ function editor_project_configuration()
         includedirs { RUNTIME_DIR }
         includedirs { RUNTIME_DIR .. "/Core" }     -- This is here because the runtime uses it
         includedirs { "../third_party/free_type" } -- Used to rasterise the ImGui font atlas
-        includedirs { "../third_party" }       	   -- SDL, used by ImGui to create windows
+--NIKOS        includedirs { "../third_party" }       	   -- SDL, used by ImGui to create windows
 
         -- Libraries
         libdirs (LIBRARY_DIR)
@@ -260,7 +261,7 @@ function editor_project_configuration()
             targetname ( EXECUTABLE_NAME .. "_debug" )
             targetdir (TARGET_DIR)
             debugdir (TARGET_DIR)
-            links { "freetype_debug" }
+--NIKOS            links { "freetype_debug" }
 --NIKOS            links { "SDL2_debug" }
 end
 
