@@ -1,0 +1,83 @@
+#NIKOS TODO: resource.rc
+
+set(EDITOR_SRC_IMGUI 
+       "ImGui/ImGuiExtension.cpp"
+       "ImGui/Implementation/imgui_impl_sdl2.cpp"
+       "ImGui/Source/ImGuizmo/GraphEditor.cpp"
+       "ImGui/Source/ImGuizmo/ImCurveEdit.cpp"
+       "ImGui/Source/ImGuizmo/ImGradient.cpp"
+       "ImGui/Source/ImGuizmo/ImGuizmo.cpp"
+       "ImGui/Source/ImGuizmo/ImSequencer.cpp"
+       "ImGui/Source/imgui.cpp"
+       "ImGui/Source/imgui_demo.cpp"
+       "ImGui/Source/imgui_draw.cpp"
+       "ImGui/Source/imgui_freetype.cpp"
+       "ImGui/Source/imgui_stdlib.cpp"
+       "ImGui/Source/imgui_tables.cpp"
+       "ImGui/Source/imgui_widgets.cpp"
+)
+set(EDITOR_HEADER_IMGUI 
+       "ImGui/ImGuiExtension.h"
+       "ImGui/Implementation/imgui_impl_sdl2.h"
+       "ImGui/Implementation/ImGui_RHI.h"
+       "ImGui/Implementation/ImGui_TransformGizmo.h"
+       "ImGui/Source/imconfig.h"
+       "ImGui/Source/imgui.h"
+       "ImGui/Source/imgui_freetype.h"
+       "ImGui/Source/imgui_internal.h"
+       "ImGui/Source/imgui_stdlib.h"
+       "ImGui/Source/imstb_rectpack.h"
+       "ImGui/Source/imstb_textedit.h"
+       "ImGui/Source/imstb_truetype.h"
+       "ImGui/Source/stb_sprintf.h"
+       "ImGui/Source/ImGuizmo/GraphEditor.h"
+       "ImGui/Source/ImGuizmo/ImCurveEdit.h"
+       "ImGui/Source/ImGuizmo/ImGradient.h"
+       "ImGui/Source/ImGuizmo/ImGuizmo.h"
+       "ImGui/Source/ImGuizmo/ImSequencer.h"
+       "ImGui/Source/ImGuizmo/ImZoomSlider.h"
+)
+
+set(EDITOR_SRC_WIDGETS
+       "Widgets/AssetBrowser.cpp"
+       "Widgets/Console.cpp"
+       "Widgets/Profiler.cpp"
+       "Widgets/ProgressDialog.cpp"
+       "Widgets/Properties.cpp"
+       "Widgets/RenderOptions.cpp"
+       "Widgets/ResourceViewer.cpp"
+       "Widgets/ShaderEditor.cpp"
+       "Widgets/TextureViewer.cpp"
+       "Widgets/TitleBar.cpp"
+       "Widgets/Viewport.cpp"
+       "Widgets/Widget.cpp"
+       "Widgets/WorldViewer.cpp"
+)
+set(EDITOR_HEADER_WIDGETS
+       "Widgets/AssetBrowser.h"
+       "Widgets/Console.h"
+       "Widgets/Profiler.h"
+       "Widgets/ProgressDialog.h"
+       "Widgets/Properties.h"
+       "Widgets/RenderOptions.h"
+       "Widgets/ResourceViewer.h"
+       "Widgets/ShaderEditor.h"
+       "Widgets/TextureViewer.h"
+       "Widgets/TitleBar.h"
+       "Widgets/Viewport.h"
+       "Widgets/Widget.h"
+       "Widgets/WorldViewer.h"
+)
+
+set(EDITOR_SRC_WIDGETSDEFERRED
+       "WidgetsDeferred/ButtonColorPicker.cpp"
+       "WidgetsDeferred/FileDialog.cpp"
+       "WidgetsDeferred/IconLoader.cpp"
+       "WidgetsDeferred/TextEditor.cpp"
+)
+set(EDITOR_HEADER_WIDGETSDEFERRED
+       "WidgetsDeferred/ButtonColorPicker.h"
+       "WidgetsDeferred/FileDialog.h"
+       "WidgetsDeferred/IconLoader.h"
+       "WidgetsDeferred/TextEditor.h"
+)

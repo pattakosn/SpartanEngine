@@ -1,0 +1,289 @@
+set(RUNTIME_SRC_AUDIO
+       "Audio/Audio.cpp"
+       "Audio/AudioClip.cpp"
+)
+set(RUNTIME_HEADER_AUDIO
+       "Audio/Audio.h"
+       "Audio/AudioClip.h"
+)
+
+set(RUNTIME_SRC_COMMANDS
+       "Commands/CommandStack.cpp"
+       "Commands/CommandTransform.cpp"
+)
+set(RUNTIME_HEADER_COMMANDS
+       "Commands/Command.h"
+       "Commands/CommandStack.h"
+       "Commands/CommandTransform.h"
+)
+
+#NIKOS TODO: add precompiled header: Core/pch.cpp 
+set(RUNTIME_SRC_CORE
+       "Core/Engine.cpp"
+       "Core/Event.cpp"
+       "Core/FileSystem.cpp"
+       "Core/pch.cpp"
+       "Core/ProgressTracker.cpp"
+       "Core/Settings.cpp"
+       "Core/SpartanObject.cpp"
+       "Core/ThreadPool.cpp"
+       "Core/Timer.cpp"
+       "Core/Window.cpp"
+)
+set(RUNTIME_HEADER_CORE
+       "Core/Definitions.h"
+       "Core/Engine.h"
+       "Core/Event.h"
+       "Core/FileSystem.h"
+       "Core/pch.h"
+       "Core/ProgressTracker.h"
+       "Core/Settings.h"
+       "Core/SpartanObject.h"
+       "Core/Stopwatch.h"
+       "Core/ThreadPool.h"
+       "Core/Timer.h"
+       "Core/Window.h"
+)
+
+set(RUNTIME_SRC_DISPLAY
+       "Display/Display.cpp"
+)
+set(RUNTIME_HEADER_DISPLAY
+       "Display/Display.h"
+       "Display/DisplayMode.h"
+)
+
+set(RUNTIME_SRC_IO
+       "IO/FileStream.cpp"
+       "IO/pugixml.cpp"
+)
+set(RUNTIME_HEADER_IO
+       "IO/FileStream.h"
+       "IO/pugixml.hpp"
+       "IO/pugiconfig.hpp"
+)
+
+set(RUNTIME_SRC_INPUT
+       "Input/Input.cpp"
+       "Input/InputGamepad.cpp"
+       "Input/InputKeyboard.cpp"
+       "Input/InputMouse.cpp"
+       "Input/InputSteeringWheel.cpp"
+)
+set(RUNTIME_HEADER_INPUT
+       "Input/Input.h"
+)
+
+set(RUNTIME_SRC_LOGGING
+       "Logging/Log.cpp"
+)
+set(RUNTIME_HEADER_LOGGING
+       "Logging/ILogger.h"
+       "Logging/Log.h"
+)
+
+set(RUNTIME_SRC_MATH
+       "Math/BoundingBox.cpp"
+       "Math/Frustum.cpp"
+       "Math/Matrix.cpp"
+       "Math/Plane.cpp"
+       "Math/Quaternion.cpp"
+       "Math/Ray.cpp"
+       "Math/Rectangle.cpp"
+       "Math/Sphere.cpp"
+       "Math/Vector2.cpp"
+       "Math/Vector3.cpp"
+       "Math/Vector4.cpp"
+)
+set(RUNTIME_HEADER_MATH
+       "Math/BoundingBox.h"
+       "Math/Frustum.h"
+       "Math/MathHelper.h"
+       "Math/Matrix.h"
+       "Math/Plane.h"
+       "Math/Quaternion.h"
+       "Math/Ray.h"
+       "Math/RayHit.h"
+       "Math/Rectangle.h"
+       "Math/Sphere.h"
+       "Math/Vector2.h"
+       "Math/Vector3.h"
+       "Math/Vector4.h"
+)
+
+set(RUNTIME_SRC_PHYSICS
+       "Physics/Car.cpp"
+       "Physics/Physics.cpp"
+       "Physics/PhysicsDebugDraw.cpp"
+)
+set(RUNTIME_HEADER_PHYSICS
+       "Physics/BulletPhysicsHelper.h"
+       "Physics/Car.h"
+       "Physics/Physics.h"
+       "Physics/PhysicsDebugDraw.h"
+)
+
+set(RUNTIME_SRC_PROFILING
+       "Profiling/Profiler.cpp"
+       "Profiling/RenderDoc.cpp"
+       "Profiling/TimeBlock.cpp"
+)
+set(RUNTIME_HEADER_PROFILING
+       "Profiling/Profiler.h"
+       "Profiling/RenderDoc.h"
+       "Profiling/TimeBlock.h"
+)
+
+set(RUNTIME_SRC_RHI
+       "RHI/RHI_CommandList.cpp"
+       "RHI/RHI_DescriptorSet.cpp"
+       "RHI/RHI_DescriptorSetLayout.cpp"
+       "RHI/RHI_Device.cpp"
+       "RHI/RHI_Implementation.cpp"
+       "RHI/RHI_PhysicalDevice.cpp"
+       "RHI/RHI_PipelineState.cpp"
+       "RHI/RHI_Sampler.cpp"
+       "RHI/RHI_Shader.cpp"
+       "RHI/RHI_Texture.cpp"
+       "RHI/RHI_Viewport.cpp"
+       "RHI/Vulkan/Vulkan_BlendState.cpp"
+       "RHI/Vulkan/Vulkan_CommandList.cpp"
+       "RHI/Vulkan/Vulkan_ConstantBuffer.cpp"
+       "RHI/Vulkan/Vulkan_DepthStencilState.cpp"
+       "RHI/Vulkan/Vulkan_DescriptorSet.cpp"
+       "RHI/Vulkan/Vulkan_DescriptorSetLayout.cpp"
+       "RHI/Vulkan/Vulkan_Device.cpp"
+       "RHI/Vulkan/Vulkan_Fence.cpp"
+       "RHI/Vulkan/Vulkan_FidelityFX.cpp"
+       "RHI/Vulkan/Vulkan_IndexBuffer.cpp"
+       "RHI/Vulkan/Vulkan_InputLayout.cpp"
+       "RHI/Vulkan/Vulkan_Pipeline.cpp"
+       "RHI/Vulkan/Vulkan_Queue.cpp"
+       "RHI/Vulkan/Vulkan_RasterizerState.cpp"
+       "RHI/Vulkan/Vulkan_Sampler.cpp"
+       "RHI/Vulkan/Vulkan_Semaphore.cpp"
+       "RHI/Vulkan/Vulkan_Shader.cpp"
+       "RHI/Vulkan/Vulkan_StructuredBuffer.cpp"
+       "RHI/Vulkan/Vulkan_SwapChain.cpp"
+       "RHI/Vulkan/Vulkan_Texture.cpp"
+       "RHI/Vulkan/Vulkan_VertexBuffer.cpp"
+)
+set(RUNTIME_HEADER_RHI
+       "RHI/RHI_BlendState.h"
+       "RHI/RHI_CommandList.h"
+       "RHI/RHI_ConstantBuffer.h"
+       "RHI/RHI_Definitions.h"
+       "RHI/RHI_DepthStencilState.h"
+       "RHI/RHI_Descriptor.h"
+       "RHI/RHI_DescriptorSet.h"
+       "RHI/RHI_DescriptorSetLayout.h"
+       "RHI/RHI_Device.h"
+       "RHI/RHI_DirectXShaderCompiler.h"
+       "RHI/RHI_Fence.h"
+       "RHI/RHI_FidelityFX.h"
+       "RHI/RHI_Implementation.h"
+       "RHI/RHI_IndexBuffer.h"
+       "RHI/RHI_InputLayout.h"
+       "RHI/RHI_PhysicalDevice.h"
+       "RHI/RHI_Pipeline.h"
+       "RHI/RHI_PipelineState.h"
+       "RHI/RHI_Queue.h"
+       "RHI/RHI_RasterizerState.h"
+       "RHI/RHI_Sampler.h"
+       "RHI/RHI_Semaphore.h"
+       "RHI/RHI_Shader.h"
+       "RHI/RHI_StructuredBuffer.h"
+       "RHI/RHI_SwapChain.h"
+       "RHI/RHI_Texture2DArray.h"
+       "RHI/RHI_Texture2D.h"
+       "RHI/RHI_TextureCube.h"
+       "RHI/RHI_Texture.h"
+       "RHI/RHI_VertexBuffer.h"
+       "RHI/RHI_Vertex.h"
+       "RHI/RHI_Viewport.h"
+       "RHI/Vulkan/vk_mem_alloc.h"
+)
+
+set(RUNTIME_SRC_RENDERING
+       "Rendering/Animation.cpp"
+       "Rendering/Color.cpp"
+       "Rendering/Font/Font.cpp"
+       "Rendering/Material.cpp"
+       "Rendering/Mesh.cpp"
+       "Rendering/Renderer.cpp"
+       "Rendering/Renderer_Passes.cpp"
+       "Rendering/Renderer_Primitives.cpp"
+       "Rendering/Renderer_Resources.cpp"
+       "Rendering/meshoptimizer/allocator.cpp"
+       "Rendering/meshoptimizer/clusterizer.cpp"
+       "Rendering/meshoptimizer/indexcodec.cpp"
+       "Rendering/meshoptimizer/indexgenerator.cpp"
+       "Rendering/meshoptimizer/overdrawanalyzer.cpp"
+       "Rendering/meshoptimizer/overdrawoptimizer.cpp"
+       "Rendering/meshoptimizer/simplifier.cpp"
+       "Rendering/meshoptimizer/spatialorder.cpp"
+       "Rendering/meshoptimizer/stripifier.cpp"
+       "Rendering/meshoptimizer/vcacheanalyzer.cpp"
+       "Rendering/meshoptimizer/vcacheoptimizer.cpp"
+       "Rendering/meshoptimizer/vertexcodec.cpp"
+       "Rendering/meshoptimizer/vertexfilter.cpp"
+       "Rendering/meshoptimizer/vfetchanalyzer.cpp"
+       "Rendering/meshoptimizer/vfetchoptimizer.cpp"
+)
+set(RUNTIME_HEADER_RENDERING
+       "Rendering/Animation.h"
+       "Rendering/bend_sss_cpu.h"
+       "Rendering/Color.h"
+       "Rendering/Font/Font.h"
+       "Rendering/Font/Glyph.h"
+       "Rendering/Geometry.h"
+       "Rendering/GridPartitioning.h"
+       "Rendering/Material.h"
+       "Rendering/Mesh.h"
+       "Rendering/meshoptimizer/meshoptimizer.h"
+       "Rendering/Renderer.h"
+       "Rendering/Renderer_Buffers.h"
+       "Rendering/Renderer_Definitions.h"
+)
+
+set(RUNTIME_SRC_RESOURCE
+       "Resource/IResource.cpp"
+       "Resource/Import/FontImporter.cpp"
+       "Resource/Import/ImageImporterExporter.cpp"
+       "Resource/Import/ModelImporter.cpp"
+       "Resource/ResourceCache.cpp"
+)
+set(RUNTIME_HEADER_RESOURCE
+       "Resource/IResource.h"
+       "Resource/Import/FontImporter.h"
+       "Resource/Import/ImageImporterExporter.h"
+       "Resource/Import/ModelImporter.h"
+       "Resource/ResourceCache.h"
+)
+
+set(RUNTIME_SRC_WORLD
+       "World/Components/AudioListener.cpp"
+       "World/Components/AudioSource.cpp"
+       "World/Components/Camera.cpp"
+       "World/Components/Component.cpp"
+       "World/Components/Constraint.cpp"
+       "World/Components/Light.cpp"
+       "World/Components/PhysicsBody.cpp"
+       "World/Components/Renderable.cpp"
+       "World/Components/Terrain.cpp"
+       "World/Entity.cpp"
+       "World/World.cpp"
+)
+set(RUNTIME_HEADER_WORLD
+       "World/Components/AudioListener.h"
+       "World/Components/AudioSource.h"
+       "World/Components/Camera.h"
+       "World/Components/Component.h"
+       "World/Components/Constraint.h"
+       "World/Components/Light.h"
+       "World/Components/PhysicsBody.h"
+       "World/Components/Renderable.h"
+       "World/Components/Terrain.h"
+       "World/Entity.h"
+       "World/World.h"
+)
