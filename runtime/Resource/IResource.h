@@ -117,7 +117,7 @@ namespace Spartan
 
         // type
         template <typename T>
-        static constexpr ResourceType TypeToEnum();
+        static inline ResourceType TypeToEnum() { return ResourceType::Max; }
 
     protected:
         ResourceType m_resource_type         = ResourceType::Max;

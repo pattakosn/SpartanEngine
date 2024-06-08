@@ -43,9 +43,6 @@ namespace Spartan
         m_enabled    = true;
     }
 
-    template <typename T>
-    inline constexpr ComponentType Component::TypeToEnum() { return ComponentType::Max; }
-
     template<typename T>
     inline constexpr void validate_component_type() { static_assert(is_base_of<Component, T>::value, "Provided type does not implement IComponent"); }
 
