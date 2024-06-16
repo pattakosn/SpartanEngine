@@ -534,7 +534,7 @@ namespace Spartan
         }
 
         // flight helmet
-        if (m_default_model_helmet_flight = ResourceCache::Load<Mesh>("project\\models\\flight_helmet\\FlightHelmet.gltf"))
+        if (m_default_model_helmet_flight = ResourceCache::Load<Mesh>("project\\models\\flight_helmet\\FlightHelmet.gltf"); m_default_model_helmet_flight)
         {
             shared_ptr<Entity> entity = m_default_model_helmet_flight->GetRootEntity().lock();
             entity->SetObjectName("flight_helmet");
@@ -543,7 +543,7 @@ namespace Spartan
         }
 
         // damaged helmet
-        if (m_default_model_helmet_damaged = ResourceCache::Load<Mesh>("project\\models\\damaged_helmet\\DamagedHelmet.gltf"))
+        if (m_default_model_helmet_damaged = ResourceCache::Load<Mesh>("project\\models\\damaged_helmet\\DamagedHelmet.gltf"); m_default_model_helmet_damaged)
         {
             shared_ptr<Entity> entity = m_default_model_helmet_damaged->GetRootEntity().lock();
             entity->SetObjectName("damaged_helmet");
@@ -555,7 +555,7 @@ namespace Spartan
         }
 
         // material ball
-        if (m_default_model_material_ball = ResourceCache::Load<Mesh>("project\\models\\material_ball_in_3d-coat\\scene.gltf"))
+        if (m_default_model_material_ball = ResourceCache::Load<Mesh>("project\\models\\material_ball_in_3d-coat\\scene.gltf"), m_default_model_material_ball)
         {
             shared_ptr<Entity> entity = m_default_model_material_ball->GetRootEntity().lock();
             entity->SetObjectName("material_ball");
@@ -582,7 +582,7 @@ namespace Spartan
             const float car_scale   = 0.0180f;
             const float wheel_scale = 0.3f;
 
-            if (m_default_model_car = ResourceCache::Load<Mesh>("project\\models\\toyota_ae86_sprinter_trueno_zenki\\scene.gltf"))
+            if (m_default_model_car = ResourceCache::Load<Mesh>("project\\models\\toyota_ae86_sprinter_trueno_zenki\\scene.gltf"); m_default_model_car)
             {
                 shared_ptr<Entity> entity_car = m_default_model_car->GetRootEntity().lock();
                 entity_car->SetObjectName("geometry");
@@ -702,7 +702,7 @@ namespace Spartan
                     }
 
                     // load our own wheel
-                    if (m_default_model_wheel = ResourceCache::Load<Mesh>("project\\models\\wheel\\model.blend"))
+                    if (m_default_model_wheel = ResourceCache::Load<Mesh>("project\\models\\wheel\\model.blend"); m_default_model_wheel)
                     {
                         shared_ptr<Entity> entity_wheel_root = m_default_model_wheel->GetRootEntity().lock();
                         entity_wheel_root->SetScale(Vector3(wheel_scale));
@@ -1062,7 +1062,7 @@ namespace Spartan
         float scale = 2.0f; // I actually walked in sponza, it's that big
 
         // 3d model - Sponza
-        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\sponza\\main\\NewSponza_Main_Blender_glTF.gltf"))
+        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\sponza\\main\\NewSponza_Main_Blender_glTF.gltf"); m_default_model_wheel)
         {
             shared_ptr<Entity> entity = m_default_model->GetRootEntity().lock();
             entity->SetObjectName("sponza");
@@ -1096,7 +1096,7 @@ namespace Spartan
         }
 
         // 3d model - sponza curtains
-        if (m_default_model_sponza_curtains = ResourceCache::Load<Mesh>("project\\models\\sponza\\curtains\\NewSponza_Curtains_glTF.gltf"))
+        if (m_default_model_sponza_curtains = ResourceCache::Load<Mesh>("project\\models\\sponza\\curtains\\NewSponza_Curtains_glTF.gltf"); m_default_model_sponza_curtains)
         {
             shared_ptr<Entity> entity = m_default_model_sponza_curtains->GetRootEntity().lock();
             entity->SetObjectName("sponza_curtains");
@@ -1132,7 +1132,7 @@ namespace Spartan
         Vector3 camera_rotation = Vector3(0.0f, 90.0f, 0.0f);
         create_default_world_common(camera_position, camera_rotation, LightIntensity::sky_sunlight_noon, "project\\music\\doom_e1m1.mp3", false, false);
 
-        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\doom_e1m1\\doom_E1M1.obj"))
+        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\doom_e1m1\\doom_E1M1.obj"); m_default_model)
         {
             shared_ptr<Entity> entity = m_default_model->GetRootEntity().lock();
             entity->SetObjectName("doom_e1m1");
@@ -1160,7 +1160,7 @@ namespace Spartan
         Vector3 camera_rotation = Vector3(0.0f, -180.0f, 0.0f);
         create_default_world_common(camera_position, camera_rotation, LightIntensity::bulb_150_watt, "project\\music\\jake_chudnow_shona.mp3", false);
 
-        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\Bistro_v5_2\\BistroExterior.fbx"))
+        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\Bistro_v5_2\\BistroExterior.fbx"); m_default_model)
         {
             shared_ptr<Entity> entity = m_default_model->GetRootEntity().lock();
             entity->SetObjectName("bistro_exterior");
@@ -1185,7 +1185,7 @@ namespace Spartan
             }
         }
 
-        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\Bistro_v5_2\\BistroInterior.fbx"))
+        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\Bistro_v5_2\\BistroInterior.fbx"); m_default_model)
         {
             shared_ptr<Entity> light = World::CreateEntity();
             light->SetObjectName("light_point");
@@ -1229,7 +1229,7 @@ namespace Spartan
         Vector3 camera_rotation = Vector3(11.3991f, 30.6026f, 0.0f);
         create_default_world_common(camera_position, camera_rotation);
 
-        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\vokselia_spawn\\vokselia_spawn.obj"))
+        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\vokselia_spawn\\vokselia_spawn.obj"); m_default_model)
         {
             shared_ptr<Entity> entity = m_default_model->GetRootEntity().lock();
             entity->SetObjectName("minecraft");
@@ -1257,7 +1257,7 @@ namespace Spartan
         Vector3 camera_rotation = Vector3(3.9999f, -12.1947f, 0.0f);
         create_default_world_common(camera_position, camera_rotation);
 
-        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\living_room\\living_room.obj"))
+        if (m_default_model = ResourceCache::Load<Mesh>("project\\models\\living_room\\living_room.obj"); m_default_model)
         {
             shared_ptr<Entity> entity = m_default_model->GetRootEntity().lock();
             entity->SetObjectName("living_Room");
