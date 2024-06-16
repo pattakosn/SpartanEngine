@@ -968,7 +968,7 @@ void Properties::ShowTerrain(shared_ptr<Terrain> terrain) const
         // Stats
         ImGui::BeginGroup();
         {
-            ImGui::Text("Height samples: %d", terrain->GetHeightSampleCount());
+            ImGui::Text("Height samples: %lu", terrain->GetHeightSampleCount());
             ImGui::Text("Vertices: %d",       terrain->GetVertexCount());
             ImGui::Text("Indices:  %d ",      terrain->GetIndexCount());
         }
