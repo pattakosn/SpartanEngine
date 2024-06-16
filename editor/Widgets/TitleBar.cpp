@@ -178,7 +178,7 @@ namespace
                         "SOFTWARE.";
 
                     ImGui::Separator();
-                    ImGui::TextWrapped(license_text);
+                    ImGui::TextWrapped("%s", license_text);
                 }
                 ImGui::EndGroup();
 
@@ -212,17 +212,17 @@ namespace
                             // role
                             ImGui::TableSetColumnIndex(0);
                             ImGui::SetCursorPosY(ImGui::GetCursorPosY() + y_shift);
-                            ImGui::Text(comma_seperated_contributors[index++].c_str());
+                            ImGui::TextUnformatted(comma_seperated_contributors[index++].c_str());
 
                             // name
                             ImGui::TableSetColumnIndex(1);
                             ImGui::SetCursorPosY(ImGui::GetCursorPosY() + y_shift);
-                            ImGui::Text(comma_seperated_contributors[index++].c_str());
+                            ImGui::TextUnformatted(comma_seperated_contributors[index++].c_str());
 
                             // country
                             ImGui::TableSetColumnIndex(2);
                             ImGui::SetCursorPosY(ImGui::GetCursorPosY() + y_shift);
-                            ImGui::Text(comma_seperated_contributors[index++].c_str());
+                            ImGui::TextUnformatted(comma_seperated_contributors[index++].c_str());
 
                             // button (url)
                             ImGui::TableSetColumnIndex(3);
@@ -243,11 +243,11 @@ namespace
 
                             // contribution
                             ImGui::TableSetColumnIndex(4);
-                            ImGui::Text(comma_seperated_contributors[index++].c_str());
+                            ImGui::TextUnformatted(comma_seperated_contributors[index++].c_str());
 
                             // steam key award
                             ImGui::TableSetColumnIndex(5);
-                            ImGui::Text(comma_seperated_contributors[index++].c_str());
+                            ImGui::TextUnformatted(comma_seperated_contributors[index++].c_str());
                         }
                     }
                     ImGui::EndTable();
@@ -286,12 +286,12 @@ namespace
                             // name
                             ImGui::TableSetColumnIndex(0);
                             ImGui::SetCursorPosY(ImGui::GetCursorPosY() + y_shift);
-                            ImGui::Text(lib.name.c_str());
+                            ImGui::TextUnformatted(lib.name.c_str());
 
                             // version
                             ImGui::TableSetColumnIndex(1);
                             ImGui::SetCursorPosY(ImGui::GetCursorPosY() + y_shift);
-                            ImGui::Text(lib.version.c_str());
+                            ImGui::TextUnformatted(lib.version.c_str());
 
                             // url
                             ImGui::TableSetColumnIndex(2);
@@ -351,9 +351,9 @@ namespace
 
                     for (const Shortcut& shortcut : shortcuts)
                     {
-                        ImGui::BulletText(shortcut.shortcut);
+                        ImGui::BulletText("%s", shortcut.shortcut);
                         ImGui::SameLine(col_a);
-                        ImGui::Text(shortcut.usage);
+                        ImGui::TextUnformatted(shortcut.usage);
                     }
                 }
             }

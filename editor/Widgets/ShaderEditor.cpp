@@ -70,7 +70,7 @@ void ShaderEditor::ShowShaderSource()
     if (ImGui::BeginChild("##shader_editor_source", size, true, ImGuiWindowFlags_NoScrollbar))
     {
         // Title
-        ImGui::Text(m_shader ? m_shader_name.c_str() : "Select a shader");
+        ImGui::TextUnformatted(m_shader ? m_shader_name.c_str() : "Select a shader");
 
         // Content
         if (m_shader)

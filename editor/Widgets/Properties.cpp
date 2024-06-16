@@ -684,7 +684,7 @@ void Properties::ShowMaterial(Material* material) const
         // name
         ImGui::NewLine();
         ImGui::Text("Name");
-        ImGui::SameLine(column_pos_x); ImGui::Text(material->GetObjectName().c_str());
+        ImGui::SameLine(column_pos_x); ImGui::TextUnformatted(material->GetObjectName().c_str());
 
         if (material->GetProperty(MaterialProperty::CanBeEdited) == 1.0f)
         {
@@ -698,7 +698,7 @@ void Properties::ShowMaterial(Material* material) const
                     // Name
                     if (name)
                     {
-                        ImGui::Text(name);
+                        ImGui::TextUnformatted(name);
 
                         if (tooltip)
                         {

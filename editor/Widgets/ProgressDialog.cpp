@@ -44,7 +44,7 @@ namespace
         ImGui::BeginGroup();
         {
             ImGui::ProgressBar(fraction, ImVec2(0.0f, 0.0f));
-            ImGui::Text(text);
+            ImGui::TextUnformatted(text);
         }
         ImGui::EndGroup();
     }

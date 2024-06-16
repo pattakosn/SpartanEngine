@@ -92,23 +92,23 @@ void ResourceViewer::OnTickVisible()
 
                 // Type
                 ImGui::TableSetColumnIndex(0);
-                ImGui::Text(resource->GetResourceTypeCstr());
+                ImGui::TextUnformatted(resource->GetResourceTypeCstr());
 
                 // ID
                 ImGui::TableSetColumnIndex(1);
-                ImGui::Text(to_string(object->GetObjectId()).c_str());
+                ImGui::TextUnformatted(to_string(object->GetObjectId()).c_str());
 
                 // Name
                 ImGui::TableSetColumnIndex(2);
-                ImGui::Text(resource->GetObjectName().c_str());
+                ImGui::TextUnformatted(resource->GetObjectName().c_str());
 
                 // Path
                 ImGui::TableSetColumnIndex(3);
-                ImGui::Text(resource->GetResourceFilePath().c_str());
+                ImGui::TextUnformatted(resource->GetResourceFilePath().c_str());
 
                 // Path (native)
                 ImGui::TableSetColumnIndex(4);
-                ImGui::Text(resource->GetResourceFilePathNative().c_str());
+                ImGui::TextUnformatted(resource->GetResourceFilePathNative().c_str());
                 
                 // Memory
                 ImGui::TableSetColumnIndex(5);
