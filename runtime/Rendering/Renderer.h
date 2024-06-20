@@ -85,7 +85,7 @@ namespace Spartan
         static uint64_t GetFrameNum();
         static RHI_Api_Type GetRhiApiType();
         static void Screenshot(const std::string& file_path);
-        static void SetEntities(std::vector<std::shared_ptr<Entity>>& entities);
+        static void SetEntities(std::unordered_map<uint64_t, std::shared_ptr<Entity>>& entities);
         static bool CanUseCmdList();
 
         //= RESOLUTION/SIZE =============================================================================
@@ -158,7 +158,7 @@ namespace Spartan
         static void Pass_Skysphere(RHI_CommandList* cmd_list);
         static void Pass_Light_Integration_BrdfSpecularLut(RHI_CommandList* cmd_list);
         static void Pass_Light_Integration_EnvironmentPrefilter(RHI_CommandList* cmd_list);
-        static void Pass_Blur_Gaussian(RHI_CommandList* cmd_list, RHI_Texture* tex_in, RHI_Texture* tex_radius, const Renderer_Shader shader_type, const float radius, const uint32_t mip = rhi_all_mips);
+        static void Pass_Blur_Gaussian(RHI_CommandList* cmd_list, RHI_Texture* tex_in, RHI_Texture* tex_radius, const Renderer_Shader shader_type, const float radius, const uint32_t mip = 0);
         // passes - debug/editor
         static void Pass_Grid(RHI_CommandList* cmd_list, RHI_Texture* tex_out);
         static void Pass_Lines(RHI_CommandList* cmd_list, RHI_Texture* tex_out);
