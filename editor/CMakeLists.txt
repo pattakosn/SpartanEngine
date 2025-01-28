@@ -1,0 +1,7 @@
+file(GLOB_RECURSE EDITOR_SRC CONFIGURE_DEPENDS *.cpp)
+file(GLOB_RECURSE EDITOR_HEADER CONFIGURE_DEPENDS *.h *hpp)
+
+set(EXECUTABLE_NAME "spartan${EXECUTABLE_SUFFIX}")
+add_executable(${EXECUTABLE_NAME} WIN32 ${EDITOR_SRC} ${EDITOR_HEADER})
+target_include_directories(${EXECUTABLE_NAME} PUBLIC ${spartan_SOURCE_DIR}/runtime)
+target_link_libraries(${EXECUTABLE_NAME} PRIVATE runtime)
