@@ -233,7 +233,13 @@ namespace spartan
     {
         // hardware capability viewer: https://vulkan.gpuinfo.org/
 
-        vector<const char*> extensions_instance = { "VK_KHR_surface", "VK_KHR_win32_surface", "VK_EXT_swapchain_colorspace", };
+        vector<const char*> extensions_instance = { "VK_KHR_surface",
+            #ifdef _WIN32
+            "VK_KHR_win32_surface",
+            #elif __linux__
+            "VK_KHR_xlib_surface",
+            #endif
+            "VK_EXT_swapchain_colorspace", };
         vector<const char*> extensions_device   = {
             "VK_KHR_swapchain",
             "VK_EXT_memory_budget",           // to obtain precise memory usage information from Vulkan Memory Allocator
@@ -243,6 +249,8 @@ namespace spartan
             "VK_KHR_external_memory",         // to share images with Intel Open Image Denoise
             #if defined(_WIN32)
             "VK_KHR_external_memory_win32",   // external memory handle type, linux alternative: VK_KHR_external_memory_fd
+            #elif __linux__
+            "VK_KHR_external_memory_fd",
             #endif
             "VK_KHR_synchronization2",        // this is part of Vulkan 1.4 but AMD FidelityFX Breadcrumbs without it (they fetch device pointers from some table)
             "VK_KHR_get_memory_requirements2" // this is part of Vulkan 1.4 but AMD FidelityFX FSR 3 crashes without it (they fetch device pointers from some table)
@@ -1673,7 +1681,7 @@ namespace spartan
         {
             frames_equilibrium++;
 
-            // if it’s been stable for frame_selflife frames, reset counter and delete
+            // if it's been stable for frame_selflife frames, reset counter and delete
             if (frames_equilibrium >= frames_selflife)
             {
                 frames_equilibrium = 0;
