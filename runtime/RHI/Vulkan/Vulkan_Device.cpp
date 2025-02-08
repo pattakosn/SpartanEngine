@@ -682,11 +682,14 @@ namespace spartan
                 vector<VkExternalMemoryHandleTypeFlags> external_memory_handle_types;
                 VkPhysicalDeviceMemoryProperties physical_device_memory_properties;
                 vkGetPhysicalDeviceMemoryProperties(RHI_Context::device_physical, &physical_device_memory_properties);
-                #if defined(_WIN32)
-                external_memory_handle_types.resize(physical_device_memory_properties.memoryTypeCount, VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR);
-                #else
-                SP_LOG_ERROR("Not implemented, you need to use the Linux equivalent via VK_KHR_external_memory_fd");
-                #endif
+                external_memory_handle_types.resize(physical_device_memory_properties.memoryTypeCount,
+                    #if defined(_WIN32)
+                    VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR
+                    #else
+                    VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT_KHR
+                    #endif
+                );
+
                 allocator_info.pTypeExternalMemoryHandleTypes = external_memory_handle_types.data();
 
                 SP_ASSERT_VK(vmaCreateAllocator(&allocator_info, &vulkan_memory_allocator::allocator_external));
