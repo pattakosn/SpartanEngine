@@ -43,10 +43,10 @@ namespace spartan
     void ResourceCache::Initialize()
     {
         // create project directory
-        SetProjectDirectory("project\\");
+        SetProjectDirectory("/home/pattakosn/github.com/SpartanMineMaster/project/");
 
         // add engine standard resource directories
-        const string data_dir = "data\\";
+        const string data_dir = "/home/pattakosn/github.com/SpartanMineMaster/data/";
         AddResourceDirectory(ResourceDirectory::Environment,    m_project_directory + "environment");
         AddResourceDirectory(ResourceDirectory::Fonts,          data_dir + "fonts");
         AddResourceDirectory(ResourceDirectory::Icons,          data_dir + "icons");
@@ -179,7 +179,7 @@ namespace spartan
         {
             if (resource_directory_type == ResourceDirectory::Shaders)
             {
-                directory = "..\\" + directory;
+                directory = "../" + directory;
             }
         }
 
@@ -208,7 +208,7 @@ namespace spartan
 
     string ResourceCache::GetDataDirectory()
     {
-        return "Data";
+        return "/home/pattakosn/github.com/SpartanMineMaster/data";
     }
 
     vector<shared_ptr<IResource>>& ResourceCache::GetResources()
