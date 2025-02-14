@@ -70,8 +70,10 @@ namespace spartan
             hdr_metadata.maxFrameAverageLightLevel = 500.0f;
 
             PFN_vkSetHdrMetadataEXT pfnVkSetHdrMetadataEXT = (PFN_vkSetHdrMetadataEXT)vkGetDeviceProcAddr(RHI_Context::device , "vkSetHdrMetadataEXT");
-            SP_ASSERT(pfnVkSetHdrMetadataEXT != nullptr);
-            pfnVkSetHdrMetadataEXT(RHI_Context::device, 1, &swapchain, &hdr_metadata);
+            if(pfnVkSetHdrMetadataEXT != nullptr)
+                pfnVkSetHdrMetadataEXT(RHI_Context::device, 1, &swapchain, &hdr_metadata);
+            else
+                SP_LOG_WARNING("SetHdrMetadata Extension is not supported, HdrMetadata haven't been set on swapchain");
         }
 
         VkSurfaceCapabilitiesKHR get_surface_capabilities(const VkSurfaceKHR surface)
