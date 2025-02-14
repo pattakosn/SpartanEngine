@@ -135,7 +135,7 @@ namespace spartan
             vector<VkSurfaceFormatKHR> supported_formats = get_supported_surface_formats(surface);
 
             // NV supports RHI_Format::B8R8G8A8_Unorm instead of RHI_Format::R8G8B8A8_Unorm.
-            if ((*format) == RHI_Format::R8G8B8A8_Unorm && RHI_Device::GetPrimaryPhysicalDevice()->IsNvidia())
+            if ((*format) == RHI_Format::R8G8B8A8_Unorm)// && RHI_Device::GetPrimaryPhysicalDevice()->IsNvidia())
             {
                 (*format) = RHI_Format::B8R8G8A8_Unorm;
             }
