@@ -2022,7 +2022,16 @@ namespace spartan
 
             texture->SetExternalMemoryHandle(static_cast<void*>(win32_handle));
             #else
-            SP_LOG_ERROR("Not implemented, you need to use the Linux equivalent via VK_KHR_external_memory_fd");
+            VkMemoryGetFdInfoKHR get_fd_info = {};
+            get_fd_info.sType                = VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR;
+            get_fd_info.memory               = allocation_info.deviceMemory;
+            get_fd_info.handleType           = VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT_KHR;
+
+            int memory_fd;
+            static PFN_vkGetMemoryFdKHR vkGetMemoryFdKHR = (PFN_vkGetMemoryFdKHR)vkGetDeviceProcAddr(RHI_Context::device, "vkGetMemoryFdKHR");
+            SP_ASSERT_VK(vkGetMemoryFdKHR(RHI_Context::device, &get_fd_info, &memory_fd));
+
+            texture->SetExternalMemoryHandle(reinterpret_cast<void*>(memory_fd));
             #endif
         }
 
