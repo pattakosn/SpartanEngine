@@ -269,17 +269,17 @@ namespace spartan
                 FreeImage_Unload(previous_bitmap);
             }
         
-            // Convert BGR to RGB (if needed)
-            if (FreeImage_GetBPP(bitmap) == 32)
-            {
-                if (FreeImage_GetRedMask(bitmap) == 0xff0000 && get_channel_count(bitmap) >= 2)
-                {
-                    if (!SwapRedBlue32(bitmap))
-                    {
-                        SP_LOG_ERROR("Failed to swap red with blue channel");
-                    }
-                }
-            }
+            //////NIKOS // Convert BGR to RGB (if needed)
+            //////NIKOS if (FreeImage_GetBPP(bitmap) == 32)
+            //////NIKOS {
+            //////NIKOS     if (FreeImage_GetRedMask(bitmap) == 0xff0000 && get_channel_count(bitmap) >= 2)
+            //////NIKOS     {
+            //////NIKOS         if (!SwapRedBlue32(bitmap))
+            //////NIKOS         {
+            //////NIKOS             SP_LOG_ERROR("Failed to swap red with blue channel");
+            //////NIKOS         }
+            //////NIKOS     }
+            //////NIKOS }
 
             // FreeImage loads images upside down, so flip it
             FreeImage_FlipVertical(bitmap);
