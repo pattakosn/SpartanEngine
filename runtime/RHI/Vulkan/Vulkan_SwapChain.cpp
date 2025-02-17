@@ -275,7 +275,7 @@ namespace spartan
             create_info.compositeAlpha = get_supported_composite_alpha_format(surface);
             create_info.presentMode    = get_present_mode(surface, m_present_mode);
             create_info.clipped        = VK_TRUE;
-            create_info.oldSwapchain   = nullptr;
+            create_info.oldSwapchain   = VK_NULL_HANDLE;
 
             SP_ASSERT_VK(vkCreateSwapchainKHR(RHI_Context::device, &create_info, nullptr, &swap_chain));
 
@@ -411,7 +411,7 @@ namespace spartan
                 static_cast<VkSwapchainKHR>(m_rhi_swapchain),
                 16000000, // 16ms
                 static_cast<VkSemaphore>(signal_semaphore->GetRhiResource()),
-                nullptr,
+                VK_NULL_HANDLE,
                 &m_image_index
             );
     

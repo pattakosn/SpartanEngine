@@ -760,7 +760,7 @@ namespace spartan
     {
         mutex descriptor_pipeline_mutex;
         uint32_t allocated_descriptor_sets = 0;
-        VkDescriptorPool descriptor_pool   = nullptr;
+        VkDescriptorPool descriptor_pool   = VK_NULL_HANDLE;
 
         // cache
         unordered_map<uint64_t, RHI_DescriptorSet> sets;
@@ -788,7 +788,7 @@ namespace spartan
             pool_create_info.maxSets                    = rhi_max_descriptor_set_count;
 
             // create
-            SP_ASSERT(descriptors::descriptor_pool == nullptr);
+            SP_ASSERT(descriptors::descriptor_pool == VK_NULL_HANDLE);
             SP_ASSERT_VK(vkCreateDescriptorPool(RHI_Context::device, &pool_create_info, nullptr, &descriptors::descriptor_pool));
 
             Profiler::m_descriptor_set_count = 0;
@@ -1087,7 +1087,7 @@ namespace spartan
         {
             // features that will be enabled
             features_vrs.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_FEATURES_KHR;
-            features_vrs.pNext = nullptr;
+            features_vrs.pNext = VK_NULL_HANDLE;
             
             features_robustness.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT;
             features_robustness.pNext = &features_vrs;
@@ -1107,7 +1107,8 @@ namespace spartan
             // detect which features are supported
             VkPhysicalDeviceFragmentShadingRateFeaturesKHR support_vrs = {};
             support_vrs.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_FEATURES_KHR;
-            
+            support_vrs.pNext = VK_NULL_HANDLE;
+
             VkPhysicalDeviceRobustness2FeaturesEXT support_robustness = {};
             support_robustness.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT;
             support_robustness.pNext = &support_vrs;
@@ -1144,7 +1145,7 @@ namespace spartan
                     }
                     else
                     {
-                        features_robustness.pNext = nullptr; // remove VRS from the chain
+                        features_robustness.pNext = VK_NULL_HANDLE; // remove VRS from the chain
                     }
                 }
 
@@ -1526,7 +1527,7 @@ namespace spartan
 
         // descriptor pool
         vkDestroyDescriptorPool(RHI_Context::device, descriptors::descriptor_pool, nullptr);
-        descriptors::descriptor_pool = nullptr;
+        descriptors::descriptor_pool = VK_NULL_HANDLE;
 
         // debug messenger
         if (Debugging::IsValidationLayerEnabled())
