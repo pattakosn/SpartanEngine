@@ -475,7 +475,7 @@ namespace spartan
                 static_cast<VkSwapchainKHR>(m_rhi_swapchain),
                 16000000, // 16ms
                 static_cast<VkSemaphore>(signal_semaphore->GetRhiResource()),
-                nullptr,
+                VK_NULL_HANDLE,
                 &m_image_index
             );
     
