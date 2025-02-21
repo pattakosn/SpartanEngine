@@ -13,6 +13,8 @@ sudo btrfs fi usage /
 
 docker buildx build  -f Dockerfile-arch -t building-img:latest .
 docker run --memory=8g --cpus=16 --rm -it building-img:latest
+docker run -d --name my_container my_image
+docker cp my_container:/data ./destination
 docker stats
 docker system prune
 
