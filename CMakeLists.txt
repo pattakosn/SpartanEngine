@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14...3.31)
+cmake_minimum_required(VERSION 3.15...3.31)
 project(spartan
         VERSION 1.0
         DESCRIPTION "Panos Karambelas' awesome 3D engine"
@@ -13,6 +13,15 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 #set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
+
+
+###NIKOS EXECUTABLE_NAME=spartan_d3d12 or spartan_d3d12
+###NIKOS LIBRARY_DIR=third_party/libraries
+###NIKOS OBJ_DIR=binaries/obj
+###NIKOS TARGET_DIR=binaries
+
+
 
 # Require out-of-source builds
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
@@ -30,6 +39,9 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
+#NIKOS TODO: ensure these are used:
+#            -mavx2
+#            /arch:AVX2, symbols "On", debugformat "c7, staticruntime "On", conformancemode "On"
 #set(SPARTAN_GCC_CLANG_CXX_FLAGS  "-Wall;-Wextra;-pedantic")
 # I do not know why this is required for clang but without it i had COM compile errors
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
