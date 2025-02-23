@@ -51,9 +51,14 @@ file(GLOB RUNTIME_SRC_RHI CONFIGURE_DEPENDS RHI/*.cpp RHI/Vulkan/*.cpp)
 list(APPEND RUNTIME_SRC ${RUNTIME_SRC_RHI})
 file(GLOB RUNTIME_HEADER_RHI CONFIGURE_DEPENDS RHI/*.h RHI/Vulkan/*.h RHI/*.hpp RHI/Vulkan/*.hpp)
 list(APPEND RUNTIME_HEADER ${RUNTIME_HEADER_RHI})
-list(REMOVE_ITEM RUNTIME_HEADER "Core/pch.h")
+#list(REMOVE_ITEM RUNTIME_HEADER "Core/pch.h")
 
-add_library(runtime ${RUNTIME_SRC} ${RUNTIME_HEADER})
+if (MSVC)
+    set(LIBRARY_TYPE STATIC)
+else()
+    set(LIBRARY_TYPE SHARED)
+endif()
+add_library(runtime ${LIBRARY_TYPE} ${RUNTIME_SRC} ${RUNTIME_HEADER})
 
 target_precompile_headers(runtime PRIVATE Core/pch.h)
 
@@ -78,6 +83,7 @@ target_compile_options(runtime PUBLIC
 target_link_libraries(runtime
   PUBLIC
     PkgConfig::FREETYPE2
+    SDL3::SDL3
   PRIVATE
     assimp::assimp
     ${BULLET_LIBRARIES}
@@ -86,7 +92,6 @@ target_link_libraries(runtime
     ${FreeImageLib_LIBRARY}
     meshoptimizer::meshoptimizer
     OpenImageDenoise
-    SDL3::SDL3
     spirv-cross-core
     spirv-cross-c
     spirv-cross-cpp
