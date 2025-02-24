@@ -214,7 +214,7 @@ function runtime_project_configuration()
             includedirs { "/usr/include/renderdoc" }
         end
 
-  includedirs { "../runtime/Core" } -- This is here because clang needs the full pre-compiled header path
+        includedirs { "../runtime/Core" } -- This is here because clang needs the full pre-compiled header path
 
         -- Libraries
         libdirs (LIBRARY_DIR)
