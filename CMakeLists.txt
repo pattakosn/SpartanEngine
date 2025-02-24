@@ -20,7 +20,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 ###NIKOS LIBRARY_DIR=third_party/libraries
 ###NIKOS OBJ_DIR=binaries/obj
 ###NIKOS TARGET_DIR=binaries
-
+###NIKOS sto install xreaizontai:
+###NIKO     binaries/download_assets.py,file_utilities.py, data
 
 
 # Require out-of-source builds
@@ -56,6 +57,26 @@ endif()
 #else()
 #    message(STATUS "IPO / LTO not supported: ${result}")
 #endif()
+
+
+set(API_GRAPHICS_VULKAN "API_GRAPHICS_VULKAN")
+set(API_GRAPHICS_D3D12 "API_GRAPHICS_D3D12")
+set(DEFAULT_API_GRAPHICS ${API_GRAPHICS_VULKAN})
+set(API_GRAPHICS_USED ${DEFAULT_API_GRAPHICS} CACHE STRING "spartan supports Vulkan on Windows or Linux and DX12 on Windows.Will by default build for Vulkan")
+if(UNIX)
+    set_property(CACHE API_GRAPHICS_USED PROPERTY STRINGS ${API_GRAPHICS_VULKAN})
+elseif(WIN32)
+    set_property(CACHE API_GRAPHICS_USED PROPERTY STRINGS ${API_GRAPHICS_VULKAN} ${API_GRAPHICS_D3D12})
+endif()
+message(STATUS "[spartan] ${API_GRAPHICS_USED} graphics API chosen")
+# Append _vulkan or _d3d12 to the executable name based on the selected graphics API
+if(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_VULKAN")
+    set(EXECUTABLE_SUFFIX "_vulkan")
+elseif(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_D3D12")
+    set(EXECUTABLE_SUFFIX "_d3d12")
+else()
+    message(FATAL_ERROR "Invalid API_GRAPHICS_USED value")
+endif()
 
 add_subdirectory(runtime)
 add_subdirectory(editor)
