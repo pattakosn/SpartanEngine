@@ -19,6 +19,11 @@ docker cp my_container:/data ./destination
 docker stats
 docker system prune
 
+glxinfo | grep "OpenGL renderer"    : OpenGL renderer string: AMD Radeon Graphics (radeonsi, renoir, LLVM 19.1.7, DRM 3.60, 6.13.3-arch1-1)
+lspci | grep VGA                    : 07:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev d1)
+vulkaninfo | grep deviceName        : deviceName        = AMD Radeon Graphics (RADV RENOIR)
+Radeon Vega 8 8CUs (GCN 5th generation) 512:32:8 8 CUs Unified shaders : texture mapping units : render output units and compute units (CU)
+AMD Ryzen 7 PRO 5850U
 https://github.com/PanosK92/SpartanEngine/blob/master/runtime/Core/Debugging.h
     inline static bool m_validation_layer_enabled        = false;
     inline static bool m_gpu_assisted_validation_enabled = false;
