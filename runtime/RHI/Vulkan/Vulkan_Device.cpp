@@ -1145,7 +1145,7 @@ namespace spartan
                     }
                     else
                     {
-                        features_robustness.pNext = nullptr; // remove VRS from the chain
+                        features_robustness.pNext = VK_NULL_HANDLE; // remove VRS from the chain
                     }
                 }
 
