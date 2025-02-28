@@ -1220,8 +1220,8 @@ namespace spartan
                     features_robustness.nullDescriptor = VK_TRUE;
 
                     // AMD doesn't support Vulkan 1.4 yet, so we'll wait on it.
-                    SP_ASSERT(support_1_4.pushDescriptor == VK_TRUE);
-                    features_1_4.pushDescriptor = VK_TRUE;
+                    //SP_ASSERT(support_1_4.pushDescriptor == VK_TRUE);
+                    //features_1_4.pushDescriptor = VK_TRUE;
                 }
 
                 // fidelity fx
