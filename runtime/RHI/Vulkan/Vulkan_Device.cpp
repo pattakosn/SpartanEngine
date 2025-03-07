@@ -1225,37 +1225,37 @@ namespace spartan
                 }
 
                 // fidelity fx
-                {
-                    // brixelizer gi
-                    SP_ASSERT(support_1_2.shaderStorageBufferArrayNonUniformIndexing == VK_TRUE);
-                    features_1_2.shaderStorageBufferArrayNonUniformIndexing = VK_TRUE;
-
-                    // spd
-                    SP_ASSERT(support_1_2.shaderSubgroupExtendedTypes == VK_TRUE);
-                    features_1_2.shaderSubgroupExtendedTypes = VK_TRUE;
-
-                    // float16 - If supported, fsr will opt for it, so don't assert.
-                    if (support_1_2.shaderFloat16 == VK_TRUE)
-                    {
-                        features_1_2.shaderFloat16 = VK_TRUE;
-                    }
-
-                    // int16 - If supported, fsr will opt for it, so don't assert.
-                    if (support.features.shaderInt16 == VK_TRUE)
-                    {
-                        features.features.shaderInt16 = VK_TRUE;
-                    }
-
-                    // wave64
-                    SP_ASSERT(support_1_3.shaderDemoteToHelperInvocation == VK_TRUE);
-                    features_1_3.shaderDemoteToHelperInvocation = VK_TRUE;
-
-                    // wave64 - If supported, fsr will opt for it, so don't assert
-                    if (support_1_3.subgroupSizeControl == VK_TRUE)
-                    {
-                        features_1_3.subgroupSizeControl = VK_TRUE;
-                    }
-                }
+                /////{
+                /////    // brixelizer gi
+                /////    SP_ASSERT(support_1_2.shaderStorageBufferArrayNonUniformIndexing == VK_TRUE);
+                /////    features_1_2.shaderStorageBufferArrayNonUniformIndexing = VK_TRUE;
+/////
+                /////    // spd
+                /////    SP_ASSERT(support_1_2.shaderSubgroupExtendedTypes == VK_TRUE);
+                /////    features_1_2.shaderSubgroupExtendedTypes = VK_TRUE;
+/////
+                /////    // float16 - If supported, fsr will opt for it, so don't assert.
+                /////    if (support_1_2.shaderFloat16 == VK_TRUE)
+                /////    {
+                /////        features_1_2.shaderFloat16 = VK_TRUE;
+                /////    }
+/////
+                /////    // int16 - If supported, fsr will opt for it, so don't assert.
+                /////    if (support.features.shaderInt16 == VK_TRUE)
+                /////    {
+                /////        features.features.shaderInt16 = VK_TRUE;
+                /////    }
+/////
+                /////    // wave64
+                /////    SP_ASSERT(support_1_3.shaderDemoteToHelperInvocation == VK_TRUE);
+                /////    features_1_3.shaderDemoteToHelperInvocation = VK_TRUE;
+/////
+                /////    // wave64 - If supported, fsr will opt for it, so don't assert
+                /////    if (support_1_3.subgroupSizeControl == VK_TRUE)
+                /////    {
+                /////        features_1_3.subgroupSizeControl = VK_TRUE;
+                /////    }
+                /////}
 
                 // directx shader compiler spir-v output automatically enables certain capabilities
                 {
