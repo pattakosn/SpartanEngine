@@ -1,0 +1,12 @@
+{
+  "dependencies": [
+    "assimp",
+    "bullet3",
+    "directx-dxc",
+    "freetype",
+    "freeimage",
+    "meshoptimizer",
+    "sdl3",
+    "shaderc"
+  ]
+}
