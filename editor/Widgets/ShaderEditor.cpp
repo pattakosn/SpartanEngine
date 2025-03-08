@@ -66,7 +66,7 @@ void ShaderEditor::ShowShaderSource()
         float start_y = ImGui::GetCursorPosY();
 
         // title
-        ImGui::Text(m_shader ? m_shader_name.c_str() : "Select a shader");
+        ImGui::Text("%s", m_shader ? m_shader_name.c_str() : "Select a shader");
 
         // content
         if (m_shader)

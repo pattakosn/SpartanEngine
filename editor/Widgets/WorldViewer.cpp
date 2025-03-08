@@ -162,7 +162,7 @@ void WorldViewer::TreeAddEntity(shared_ptr<spartan::Entity> entity)
     // add node
     const void* node_id     = reinterpret_cast<void*>(static_cast<uint64_t>(entity->GetObjectId()));
     string node_name        = entity->GetObjectName();
-    const bool is_node_open = ImGui::TreeNodeEx(node_id, node_flags, node_name.c_str());
+    const bool is_node_open = ImGui::TreeNodeEx(node_id, node_flags, "%s", node_name.c_str());
 
     // keep a copy of the selected item's rect so that we can scroll to bring it into view
     if ((node_flags & ImGuiTreeNodeFlags_Selected) && m_expand_to_selection)
