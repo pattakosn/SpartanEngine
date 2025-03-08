@@ -68,7 +68,7 @@ namespace
     void option_check_box(const char* label, const Renderer_Option render_option, const char* tooltip = nullptr)
     {
         option_first_column();
-        ImGui::Text(label);
+        ImGui::Text("%s", label);
         if (tooltip)
         {
             ImGuiSp::tooltip(tooltip);
@@ -85,7 +85,7 @@ namespace
     void option_check_box(const char* label, bool& value, const char* tooltip = nullptr)
     {
         option_first_column();
-        ImGui::Text(label);
+        ImGui::Text("%s", label);
         if (tooltip)
         {
             ImGuiSp::tooltip(tooltip);
@@ -100,7 +100,7 @@ namespace
     bool option_combo_box(const char* label, const vector<string>& options, uint32_t& selection_index, const char* tooltip = nullptr)
     {
         option_first_column();
-        ImGui::Text(label);
+        ImGui::Text("%s", label);
         if (tooltip)
         {
             ImGuiSp::tooltip(tooltip);
@@ -118,7 +118,7 @@ namespace
     bool option_value(const char* label, Renderer_Option render_option, const char* tooltip = nullptr, float step = 0.1f, float min = 0.0f, float max = numeric_limits<float>::max(), const char* format = "%.3f")
     {
         option_first_column();
-        ImGui::Text(label);
+        ImGui::Text("%s", label);
         if (tooltip)
         {
             ImGuiSp::tooltip(tooltip);
@@ -149,7 +149,7 @@ namespace
     void option_float(const char* label, float& option, float step = 0.1f, const char* format = "%.3f")
     {
         option_first_column();
-        ImGui::Text(label);
+        ImGui::Text("%s", label);
 
         option_second_column();
         {
@@ -164,7 +164,7 @@ namespace
     void option_int(const char* label, int& option, int step = 1)
     {
         option_first_column();
-        ImGui::Text(label);
+        ImGui::Text("%s", label);
         option_second_column();
         ImGui::PushID(static_cast<int>(ImGui::GetCursorPosY()));
         ImGui::PushItemWidth(width_input_numeric);
@@ -441,7 +441,7 @@ void RenderOptions::OnTickVisible()
                 option_first_column();
                 const FpsLimitType fps_limit_type = Timer::GetFpsLimitType();
                 string label = "FPS Limit - " + string((fps_limit_type == FpsLimitType::FixedToMonitor) ? "Fixed to monitor" : (fps_limit_type == FpsLimitType::Unlocked ? "Unlocked" : "Fixed"));
-                ImGui::Text(label.c_str());
+                ImGui::Text("%s", label.c_str());
 
                 option_second_column();
                 {

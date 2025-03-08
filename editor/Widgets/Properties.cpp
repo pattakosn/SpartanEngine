@@ -667,7 +667,7 @@ void Properties::ShowMaterial(Material* material) const
         ImGui::NewLine();
         ImGui::Text("Name");
         ImGui::SameLine(column_pos_x);
-        ImGui::Text(material->GetObjectName().c_str());
+        ImGui::Text("%s", material->GetObjectName().c_str());
 
         // optimized
         bool optimized = material->GetProperty(MaterialProperty::Optimized) != 0.0f;
@@ -688,7 +688,7 @@ void Properties::ShowMaterial(Material* material) const
                 // name
                 if (name)
                 {
-                    ImGui::Text(name);
+                    ImGui::Text("%s", name);
         
                     if (tooltip)
                     {
@@ -996,7 +996,7 @@ void Properties::ShowTerrain(Terrain* terrain) const
         ImGui::BeginGroup();
         {
             ImGui::Text("Area: %.1f km^2",    terrain->GetArea());
-            ImGui::Text("Height samples: %d", terrain->GetHeightSampleCount());
+            ImGui::Text("Height samples: %lu", terrain->GetHeightSampleCount());
             ImGui::Text("Vertices: %d",       terrain->GetVertexCount());
             ImGui::Text("Indices: %d ",       terrain->GetIndexCount());
         }
