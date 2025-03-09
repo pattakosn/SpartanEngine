@@ -960,6 +960,10 @@ namespace spartan
 
                 break;
             }
+
+            case PhysicsShape::Max:
+                // Just passing through to avoid unhandled switch case compiler warning
+                break;
         }
 
         if (volume > 0.0f && m_mass == mass_auto)
