@@ -421,7 +421,7 @@ void Properties::ShowRenderable(shared_ptr<Renderable> renderable) const
 
         ImGui::Text("Visible");
         ImGui::SameLine(column_pos_x);
-        ImGui::LabelText("##renderable_visible", is_visible ? "true" : "false", ImGuiInputTextFlags_AutoSelectAll | ImGuiInputTextFlags_ReadOnly);
+        ImGui::LabelText("##renderable_visible", is_visible ? "true" : "false");
 
         //= MAP =========================================================
         renderable->SetFlag(RenderableFlags::CastsShadows, cast_shadows);
