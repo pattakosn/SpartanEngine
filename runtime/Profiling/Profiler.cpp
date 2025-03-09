@@ -465,7 +465,7 @@ namespace spartan
 
                 m_fps,
                 time_frame_avg,
-                Renderer::GetFrameNumber(),
+                static_cast<unsigned long long>(Renderer::GetFrameNumber()),
 
                 time_frame_avg, time_frame_min, time_frame_max, time_frame_last,
                 time_cpu_avg, time_cpu_min, time_cpu_max, time_cpu_last,
