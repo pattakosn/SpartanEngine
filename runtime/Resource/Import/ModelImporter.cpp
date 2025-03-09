@@ -484,7 +484,7 @@ namespace spartan
         ProgressTracker::GetProgress(ProgressType::ModelImporter).Start(1, "Loading model from drive...");
 
         // read the 3D model file from drive
-        if (scene = importer.ReadFile(file_path, import_flags))
+        if ((scene = importer.ReadFile(file_path, import_flags)))
         {
             // update progress tracking
             uint32_t job_count = 0;
