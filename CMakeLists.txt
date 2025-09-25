@@ -47,7 +47,18 @@ endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   list(APPEND CMAKE_CXX_FLAGS "-fms-extensions")
 endif()
-
+option(SPARTAN_ENABLE_IWYU "Enable IncludeWhatYouUse tool" OFF)
+if(SPARTAN_ENABLE_IWYU)
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang") 
+    find_program(IWYU_PATH NAMES include-what-you-use)
+    if(IWYU_PATH)
+      set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+      message(STATUS "IWYU enabled: ${IWYU_PATH}")
+    else()
+      message(WARNING "include-what-you-use not found!")
+    endif()
+  endif()
+endif()
 #NIKOS TODO: add other spartan specific cmake options*
 
 
