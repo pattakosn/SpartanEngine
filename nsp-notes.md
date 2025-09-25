@@ -9,7 +9,7 @@ sdl3 - vcpkg
 freetype2 - vcpkg
 compressonator-cli-bin 4.5.52-1 from AUR
 
-sudo btrfs balance start /
+sudo btrfs balance start --full-balance /
 sudo btrfs fi usage /
 sudo btrfs filesystem df /
 
@@ -23,6 +23,10 @@ docker container prune -f
 docker image prune -a -f
 docker builder prune -a -f
 
+include-what-you-use:
+iwyu-tool -p . -j $(nproc) > iwyu.out
+wyu-fix-includes < iwyu.out
+
 glxinfo | grep "OpenGL renderer"    : OpenGL renderer string: AMD Radeon Graphics (radeonsi, renoir, LLVM 19.1.7, DRM 3.60, 6.13.3-arch1-1)
 lspci | grep VGA                    : 07:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Cezanne [Radeon Vega Series / Radeon Vega Mobile Series] (rev d1)
 vulkaninfo | grep deviceName        : deviceName        = AMD Radeon Graphics (RADV RENOIR)
@@ -32,3 +36,12 @@ https://github.com/PanosK92/SpartanEngine/blob/master/runtime/Core/Debugging.h
     inline static bool m_validation_layer_enabled        = false;
     inline static bool m_gpu_assisted_validation_enabled = false;
     inline static bool m_logging_to_file_enabled         = false;
+
+    gdb segfault investigation
+bt full
+info sharedlibrary
+thread apply all bt
+
+sudo nano /etc/ld.so.conf.d/opt-installed.conf
+/opt/installed/lib
+sudo ldconfig
