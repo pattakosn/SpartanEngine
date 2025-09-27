@@ -26,7 +26,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "../RHI/RHI_Vertex.h"
 #include "../Core/ThreadPool.h"
 SP_WARNINGS_OFF
+#ifdef __linux__
+#include "meshoptimizer.h"
+#else
 #include "meshoptimizer/meshoptimizer.h"
+#endif
 SP_WARNINGS_ON
 //======================================
 
