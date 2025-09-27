@@ -103,7 +103,7 @@ namespace spartan
             const ComponentType component_type = Component::TypeToEnum<T>();
             m_components[static_cast<uint32_t>(component_type)] = nullptr;
 
-            World::Resolve();
+  //NIKOS WTF IS THAT          World::Resolve();
         }
 
         void RemoveComponentById(uint64_t id);
