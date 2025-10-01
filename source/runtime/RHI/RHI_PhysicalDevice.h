@@ -39,10 +39,18 @@ namespace spartan
             this->data      = data;
 
             // copy strings into local buffers (no heap allocations)
+#ifdef _WIN32
             strncpy_s(this->name, sizeof(this->name), name ? name : "Unknown", _TRUNCATE);
             strncpy_s(this->vendor_name, sizeof(this->vendor_name), get_vendor_name(), _TRUNCATE);
             strncpy_s(this->api_version, sizeof(this->api_version), decode_api_version(api_version), _TRUNCATE);
             strncpy_s(this->driver_version, sizeof(this->driver_version), decode_driver_version(driver_version, driver_info), _TRUNCATE);
+#else
+            // copy strings into local buffers (no heap allocations)
+            snprintf(this->name, sizeof(this->name), "%s", name ? name : "Unknown");
+            snprintf(this->vendor_name, sizeof(this->vendor_name), "%s", get_vendor_name());
+            snprintf(this->api_version, sizeof(this->api_version), "%s", decode_api_version(api_version));
+            snprintf(this->driver_version, sizeof(this->driver_version), "%s", decode_driver_version(driver_version, driver_info));
+#endif
         }
 
         bool IsNvidia() const

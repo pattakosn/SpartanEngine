@@ -39,13 +39,17 @@ namespace spartan::math
 
     string Matrix::ToString() const
     {
-        char tempBuffer[200];
-        sprintf_s(tempBuffer, sizeof(tempBuffer), 
-            "%f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f", 
-            m00, m01, m02, m03,
-            m10, m11, m12, m13,
-            m20, m21, m22, m23,
-            m30, m31, m32, m33);
-        return string(tempBuffer);
+        std::ostringstream oss;
+        oss << std::setprecision(6) << std::fixed;
+        oss << m00 << ", " << m01 << ", " << m02 << ", " << m03 << ", "
+            << m10 << ", " << m11 << ", " << m12 << ", " << m13 << ", "
+            << m20 << ", " << m21 << ", " << m22 << ", " << m23 << ", "
+            << m30 << ", " << m31 << ", " << m32 << ", " << m33;
+        return oss.str();
+        //NIKOS return std::format("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}",
+        //NIKOS     m00, m01, m02, m03,
+        //NIKOS     m10, m11, m12, m13,
+        //NIKOS     m20, m21, m22, m23,
+        //NIKOS     m30, m31, m32, m33);
     }
 }
