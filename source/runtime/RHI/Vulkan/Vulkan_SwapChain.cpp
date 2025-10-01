@@ -35,6 +35,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SP_WARNINGS_OFF
 #include <SDL3/SDL_vulkan.h>
 SP_WARNINGS_ON
+// POSIX headers used by the Linux implementation of is_process_running
+#if defined(__linux__)
+#include <dirent.h>
+#include <string.h>
+#include <stdio.h>
+#include <ctype.h>
+#endif
 //================================
 
 //= NAMESPACES ===============
@@ -231,7 +238,7 @@ namespace spartan
                         char comm[256];
                         if (fgets(comm, sizeof(comm), commFile)) {
                             comm[strcspn(comm, "\n")] = 0; // Remove newline
-                            if (strcmp(comm, processName) == 0) { // Case-sensitive comparison
+                            if (strcmp(comm, process_name) == 0) { // Case-sensitive comparison
                                 fclose(commFile);
                                 closedir(dir);
                                 return true; // Process found
