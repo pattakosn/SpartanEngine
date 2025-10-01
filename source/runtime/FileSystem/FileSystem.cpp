@@ -557,8 +557,11 @@ namespace spartan
             auto time_point = chrono::time_point_cast<chrono::system_clock::duration>(last_write_time - fs::file_time_type::clock::now() + chrono::system_clock::now());
             time_t time = chrono::system_clock::to_time_t(time_point);
             std::tm tm_local{};
+#ifdef _WIN32
             localtime_s(&tm_local, &time);
-
+#else
+            localtime_r(&time, &tm_local);
+#endif
             stringstream ss;
             ss << put_time(&tm_local, "%Y-%m-%d %H:%M:%S");
             return ss.str();

@@ -176,7 +176,12 @@ void FileDialog::ShowTop(bool* is_visible, Editor* editor)
         accumulated_path[0] = '\0';
 
         char current_path[1024];
+#ifdef _WIN32
         strncpy_s(current_path, sizeof(current_path), m_current_path.c_str(), _TRUNCATE);
+#else
+        strncpy(current_path, m_current_path.c_str(), sizeof(current_path) - 1);
+        current_path[sizeof(current_path) - 1] = '\0';
+#endif
 
         // show root directory button if not at root
         if (strcmp(m_current_path.c_str(), root_path) != 0)
@@ -200,7 +205,11 @@ void FileDialog::ShowTop(bool* is_visible, Editor* editor)
         // split manually
         const char* delimiters = "/\\";
         char* context = nullptr;
+#ifdef _WIN32
         char* token   = strtok_s(current_path, delimiters, &context);
+#else
+        char* token   = strtok_r(current_path, delimiters, &context);
+#endif  
         bool first    = true;
 
         while (token)
@@ -212,15 +221,26 @@ void FileDialog::ShowTop(bool* is_visible, Editor* editor)
             }
             else
             {
+#ifdef _WIN32
                 strncat_s(accumulated_path, sizeof(accumulated_path), token, _TRUNCATE);
                 strncat_s(accumulated_path, sizeof(accumulated_path), "/", _TRUNCATE);
+#else
+                size_t remaining = sizeof(accumulated_path) - strlen(accumulated_path) - 1;
+                strncat(accumulated_path, token, remaining);
+                remaining = sizeof(accumulated_path) - strlen(accumulated_path) - 1;
+                strncat(accumulated_path, "/", remaining);
+#endif            
             }
 
             size_t root_len = strlen(root_path);
             size_t acc_len  = strlen(accumulated_path);
             if (acc_len == root_len + 1 && accumulated_path[root_len] == '/' && strncmp(accumulated_path, root_path, root_len) == 0)
             {
+#ifdef _WIN32
                 token = strtok_s(nullptr, delimiters, &context);
+#else
+                token = strtok_r(nullptr, delimiters, &context);
+#endif
                 continue;
             }
 
@@ -235,7 +255,11 @@ void FileDialog::ShowTop(bool* is_visible, Editor* editor)
             ImGui::Text(">");
             ImGui::SameLine();
 
+#ifdef _WIN32
             token = strtok_s(nullptr, delimiters, &context);
+#else
+            token = strtok_r(nullptr, delimiters, &context);
+#endif
         }
     }
 

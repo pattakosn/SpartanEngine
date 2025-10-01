@@ -61,8 +61,11 @@ namespace spartan
             // for amd gpus, driver_info matches the adrenalin version, version is an internal version
             if (driver_info)
             {
+#ifdef _WIN32
                 strncpy_s(driver_version_str, sizeof(driver_version_str), driver_info, _TRUNCATE);
-
+#else
+                snprintf(driver_version_str, sizeof(driver_version_str), "%s", driver_info);
+#endif
                 // truncate at first space
                 char* space_ptr = strchr(driver_version_str, ' ');
                 if (space_ptr) *space_ptr = '\0';

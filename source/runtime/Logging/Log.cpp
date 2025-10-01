@@ -139,12 +139,18 @@ namespace spartan
         // add timestamp directly to buffer
         auto t = time(nullptr);
         tm tm_struct{};
+#if defined(_WIN32)
         localtime_s(&tm_struct, &t);
+#else
+        // POSIX: localtime_r takes (time_t const*, tm*)
+        localtime_r(&t, &tm_struct);
+#endif
         size_t timestamp_len = strftime(buffer, SP_LOG_BUFFER_SIZE, "[%H:%M:%S]: ", &tm_struct);
         size_t available_len = SP_LOG_BUFFER_SIZE - timestamp_len - 1; // -1 for null terminator
-    
-        // append text to buffer after timestamp
-        strncpy_s(buffer + timestamp_len, available_len + 1, text, _TRUNCATE);
+
+        // append text to buffer after timestamp (portable safe copy)
+        // use snprintf to ensure null-termination and avoid MS-only strncpy_s/_TRUNCATE
+        snprintf(buffer + timestamp_len, available_len + 1, "%s", text);
     
         // log to file if requested or if an in-engine logger is not available
         if (log_to_file || !logger || Debugging::IsLoggingToFileEnabled())
