@@ -63,7 +63,7 @@ namespace spartan
 
         namespace entities
         { 
-            void music(const char* soundtrack_file_path = "project\\music\\jake_chudnow_shona.wav")
+            void music(const char* soundtrack_file_path = "project/music/jake_chudnow_shona.wav")
             {
                 SP_ASSERT(soundtrack_file_path);
 
@@ -146,12 +146,12 @@ namespace spartan
                 
                 // create material
                 shared_ptr<Material> material = make_shared<Material>();
-                material->SetTexture(MaterialTextureType::Color,     "project\\materials\\crate_space\\albedo.png");
-                material->SetTexture(MaterialTextureType::Normal,    "project\\materials\\crate_space\\normal.png");
-                material->SetTexture(MaterialTextureType::Occlusion, "project\\materials\\crate_space\\ao.png");
-                material->SetTexture(MaterialTextureType::Roughness, "project\\materials\\crate_space\\roughness.png");
-                material->SetTexture(MaterialTextureType::Metalness, "project\\materials\\crate_space\\metallic.png");
-                material->SetTexture(MaterialTextureType::Height,    "project\\materials\\crate_space\\height.png");
+                material->SetTexture(MaterialTextureType::Color,     "project/materials/crate_space/albedo.png");
+                material->SetTexture(MaterialTextureType::Normal,    "project/materials/crate_space/normal.png");
+                material->SetTexture(MaterialTextureType::Occlusion, "project/materials/crate_space/ao.png");
+                material->SetTexture(MaterialTextureType::Roughness, "project/materials/crate_space/roughness.png");
+                material->SetTexture(MaterialTextureType::Metalness, "project/materials/crate_space/metallic.png");
+                material->SetTexture(MaterialTextureType::Height,    "project/materials/crate_space/height.png");
                 material->SetProperty(MaterialProperty::Tessellation, 1.0f);
                 material->SetResourceName("crate_space" + string(EXTENSION_MATERIAL));
                 
@@ -168,7 +168,7 @@ namespace spartan
 
             void flight_helmet(const Vector3& position)
             {
-                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\flight_helmet\\FlightHelmet.gltf"))
+                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/flight_helmet/FlightHelmet.gltf"))
                 {
                     Entity* entity = mesh->GetRootEntity();
                     entity->SetObjectName("flight_helmet");
@@ -183,7 +183,7 @@ namespace spartan
 
             void damaged_helmet(const Vector3& position)
             {
-                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\damaged_helmet\\DamagedHelmet.gltf"))
+                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/damaged_helmet/DamagedHelmet.gltf"))
                 {
                     Entity* entity = mesh->GetRootEntity();
                     entity->SetObjectName("damaged_helmet");
@@ -199,7 +199,7 @@ namespace spartan
             void material_ball(const Vector3& position)
             {
                 uint32_t flags = Mesh::GetDefaultFlags() | static_cast<uint32_t>(MeshFlags::ImportCombineMeshes);
-                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\material_ball_in_3d-coat\\scene.gltf", flags))
+                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/material_ball_in_3d-coat/scene.gltf", flags))
                 {
                     // name, position, rotate
                     Entity* entity = mesh->GetRootEntity();
@@ -227,7 +227,7 @@ namespace spartan
                 {
                     material->SetResourceName("water" + string(EXTENSION_MATERIAL));
                     material->SetColor(color);
-                    material->SetTexture(MaterialTextureType::Normal,            "project\\materials\\water\\normal.jpeg");
+                    material->SetTexture(MaterialTextureType::Normal,            "project/materials/water/normal.jpeg");
                     material->SetProperty(MaterialProperty::Roughness,           0.0f);
                     material->SetProperty(MaterialProperty::Clearcoat,           0.0f);
                     material->SetProperty(MaterialProperty::Clearcoat_Roughness, 0.0f);
@@ -305,7 +305,7 @@ namespace spartan
             uint32_t mesh_flags  = Mesh::GetDefaultFlags();
             mesh_flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessOptimize);     // don't reduce vertex/index count
             mesh_flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessGenerateLods); // don't genereate and use LODs
-            if (shared_ptr<Mesh> mesh_car = ResourceCache::Load<Mesh>("project\\models\\ferrari_laferrari\\scene.gltf", mesh_flags))
+            if (shared_ptr<Mesh> mesh_car = ResourceCache::Load<Mesh>("project/models/ferrari_laferrari/scene.gltf", mesh_flags))
             {
                 default_car = mesh_car->GetRootEntity();
                 default_car->SetObjectName("ferrari_laferrari");
@@ -462,7 +462,7 @@ namespace spartan
                     sound->SetParent(default_car);
 
                     AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                    audio_source->SetAudioClip("project\\music\\car_start.wav");
+                    audio_source->SetAudioClip("project/music/car_start.wav");
                     audio_source->SetLoop(false);
                     audio_source->SetPlayOnStart(false);
                 }
@@ -474,7 +474,7 @@ namespace spartan
                     sound->SetParent(default_car);
 
                     AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                    audio_source->SetAudioClip("project\\music\\car_idle.wav");
+                    audio_source->SetAudioClip("project/music/car_idle.wav");
                     audio_source->SetLoop(true);
                     audio_source->SetPlayOnStart(false);
                 }
@@ -486,7 +486,7 @@ namespace spartan
                     sound->SetParent(default_car);
 
                     AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                    audio_source->SetAudioClip("project\\music\\car_door.wav");
+                    audio_source->SetAudioClip("project/music/car_door.wav");
                     audio_source->SetLoop(false);
                     audio_source->SetPlayOnStart(false);
                 }
@@ -594,7 +594,7 @@ namespace spartan
             entities::camera(Vector3(19.2692f, 2.65f, 0.1677f), Vector3(-18.0f, -90.0f, 0.0f));
             entities::sun(true);
             default_light_directional->GetComponent<Light>()->SetIntensity(120000.0f); // lux
-            entities::music("project\\music\\jake_chudnow_olive.wav");
+            entities::music("project/music/jake_chudnow_olive.wav");
             Renderer::SetWind(Vector3(0.0f, 0.2f, 1.0f) * 0.1f);
 
             const Vector3 position = Vector3(0.0f, 1.5f, 0.0f);
@@ -603,7 +603,7 @@ namespace spartan
             // 3d model - sponza
             uint32_t mesh_flags  = Mesh::GetDefaultFlags();
             //mesh_flags          |= static_cast<uint32_t>(MeshFlags::ImportLights); // they don't look good for some reason, investigate
-            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\sponza\\main\\NewSponza_Main_Blender_glTF.gltf", mesh_flags))
+            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/sponza/main/NewSponza_Main_Blender_glTF.gltf", mesh_flags))
             {
                 Entity* entity = mesh->GetRootEntity();
                 entity->SetObjectName("sponza");
@@ -630,7 +630,7 @@ namespace spartan
             }
 
             // 3d model - curtains
-            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\sponza\\curtains\\NewSponza_Curtains_glTF.gltf"))
+            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/sponza/curtains/NewSponza_Curtains_glTF.gltf"))
             {
                 Entity* entity = mesh->GetRootEntity();
                 entity->SetObjectName("sponza_curtains");
@@ -663,7 +663,7 @@ namespace spartan
             }
 
             // 3d model - ivy
-            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\sponza\\ivy\\NewSponza_IvyGrowth_glTF.gltf"))
+            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/sponza/ivy/NewSponza_IvyGrowth_glTF.gltf"))
             {
                 Entity* entity = mesh->GetRootEntity();
                 entity->SetObjectName("sponza_ivy");
@@ -689,7 +689,7 @@ namespace spartan
             uint32_t mesh_flags  = Mesh::GetDefaultFlags();
             mesh_flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessOptimize);
             mesh_flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessGenerateLods);
-            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\vokselia_spawn\\vokselia_spawn.obj", mesh_flags))
+            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/vokselia_spawn/vokselia_spawn.obj", mesh_flags))
             {
                 Entity* entity = mesh->GetRootEntity();
                 entity->SetObjectName("minecraft");
@@ -716,7 +716,7 @@ namespace spartan
             entities::camera();
             //default_camera->GetChildByIndex(0)->GetComponent<Camera>()->SetFlag(CameraFlags::Flashlight, true); // if you do that, you get a GPU crash, fix
 
-            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\free-subway-station-r46-subway\\Metro.fbx"))
+            if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/free-subway-station-r46-subway/Metro.fbx"))
             {
                 Entity* entity = mesh->GetRootEntity();
                 entity->SetObjectName("subway");
@@ -776,7 +776,7 @@ namespace spartan
                         sound->SetParent(entity);
 
                         AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                        audio_source->SetAudioClip("project\\music\\footsteps_grass.wav");
+                        audio_source->SetAudioClip("project/music/footsteps_grass.wav");
                         audio_source->SetPlayOnStart(false);
                     }
 
@@ -787,7 +787,7 @@ namespace spartan
                         sound->SetParent(entity);
 
                         AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                        audio_source->SetAudioClip("project\\music\\forest_river.wav");
+                        audio_source->SetAudioClip("project/music/forest_river.wav");
                         audio_source->SetLoop(true);
                     }
 
@@ -798,7 +798,7 @@ namespace spartan
                         sound->SetParent(entity);
 
                         AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                        audio_source->SetAudioClip("project\\music\\wind.wav");
+                        audio_source->SetAudioClip("project/music/wind.wav");
                         audio_source->SetLoop(true);
                     }
 
@@ -809,7 +809,7 @@ namespace spartan
                         sound->SetParent(entity);
 
                         AudioSource* audio_source = sound->AddComponent<AudioSource>();
-                        audio_source->SetAudioClip("project\\music\\underwater.wav");
+                        audio_source->SetAudioClip("project/music/underwater.wav");
                         audio_source->SetPlayOnStart(false);
                     }
                 }
@@ -828,24 +828,24 @@ namespace spartan
                         material->SetProperty(MaterialProperty::TextureTilingY, 1000.0f);
 
                         // set textures
-                        material->SetTexture(MaterialTextureType::Color,     "project\\materials\\whispy_grass_meadow\\albedo.png",    0);
-                        material->SetTexture(MaterialTextureType::Normal,    "project\\materials\\whispy_grass_meadow\\normal.png",    0);
-                        material->SetTexture(MaterialTextureType::Roughness, "project\\materials\\whispy_grass_meadow\\roughness.png", 0);
-                        material->SetTexture(MaterialTextureType::Occlusion, "project\\materials\\whispy_grass_meadow\\occlusion.png", 0);
-                        material->SetTexture(MaterialTextureType::Color,     "project\\materials\\rock\\albedo.png",                   1);
-                        material->SetTexture(MaterialTextureType::Normal,    "project\\materials\\rock\\normal.png",                   1);
-                        material->SetTexture(MaterialTextureType::Roughness, "project\\materials\\rock\\roughness.png",                1);
-                        material->SetTexture(MaterialTextureType::Occlusion, "project\\materials\\rock\\occlusion.png",                1);
-                        material->SetTexture(MaterialTextureType::Height,    "project\\materials\\rock\\height.png",                   1);
-                        material->SetTexture(MaterialTextureType::Color,     "project\\materials\\sand\\albedo.png",                   2);
-                        material->SetTexture(MaterialTextureType::Normal,    "project\\materials\\sand\\normal.png",                   2);
-                        material->SetTexture(MaterialTextureType::Roughness, "project\\materials\\sand\\roughness.png",                2);
-                        material->SetTexture(MaterialTextureType::Occlusion, "project\\materials\\sand\\occlusion.png",                2);
+                        material->SetTexture(MaterialTextureType::Color,     "project/materials/whispy_grass_meadow/albedo.png",    0);
+                        material->SetTexture(MaterialTextureType::Normal,    "project/materials/whispy_grass_meadow/normal.png",    0);
+                        material->SetTexture(MaterialTextureType::Roughness, "project/materials/whispy_grass_meadow/roughness.png", 0);
+                        material->SetTexture(MaterialTextureType::Occlusion, "project/materials/whispy_grass_meadow/occlusion.png", 0);
+                        material->SetTexture(MaterialTextureType::Color,     "project/materials/rock/albedo.png",                   1);
+                        material->SetTexture(MaterialTextureType::Normal,    "project/materials/rock/normal.png",                   1);
+                        material->SetTexture(MaterialTextureType::Roughness, "project/materials/rock/roughness.png",                1);
+                        material->SetTexture(MaterialTextureType::Occlusion, "project/materials/rock/occlusion.png",                1);
+                        material->SetTexture(MaterialTextureType::Height,    "project/materials/rock/height.png",                   1);
+                        material->SetTexture(MaterialTextureType::Color,     "project/materials/sand/albedo.png",                   2);
+                        material->SetTexture(MaterialTextureType::Normal,    "project/materials/sand/normal.png",                   2);
+                        material->SetTexture(MaterialTextureType::Roughness, "project/materials/sand/roughness.png",                2);
+                        material->SetTexture(MaterialTextureType::Occlusion, "project/materials/sand/occlusion.png",                2);
                         material->SetProperty(MaterialProperty::Tessellation, 0.0f);
                     }
 
                     // generate a terrain from a height map
-                    shared_ptr<RHI_Texture> height_map = ResourceCache::Load<RHI_Texture>("project\\height_maps\\height_map.png");
+                    shared_ptr<RHI_Texture> height_map = ResourceCache::Load<RHI_Texture>("project/height_maps/height_map.png");
                     terrain->SetHeightMapSeed(height_map.get());
                     terrain->Generate();
 
@@ -867,8 +867,8 @@ namespace spartan
                 {
                     // load meshes
                     uint32_t flags             = Mesh::GetDefaultFlags() | static_cast<uint32_t>(MeshFlags::ImportCombineMeshes); // combine gazillion entities tree entites into one
-                    shared_ptr<Mesh> mesh_tree = ResourceCache::Load<Mesh>("project\\models\\tree\\tree.fbx", flags);
-                    shared_ptr<Mesh> mesh_rock = ResourceCache::Load<Mesh>("project\\models\\rock_2\\model.obj");
+                    shared_ptr<Mesh> mesh_tree = ResourceCache::Load<Mesh>("project/models/tree/tree.fbx", flags);
+                    shared_ptr<Mesh> mesh_rock = ResourceCache::Load<Mesh>("project/models/rock_2/model.obj");
 
                     // create mesh for grass blade
                     shared_ptr<Mesh> mesh_grass_blade = meshes.emplace_back(make_shared<Mesh>());
@@ -950,25 +950,25 @@ namespace spartan
                     shared_ptr<Material> material_flower;
                     {
                         material_leaf = make_shared<Material>();
-                        material_leaf->SetTexture(MaterialTextureType::Color, "project\\models\\tree\\Twig_Base_Material_2.png");
-                        material_leaf->SetTexture(MaterialTextureType::Normal, "project\\models\\tree\\Twig_Normal.png");
-                        material_leaf->SetTexture(MaterialTextureType::AlphaMask, "project\\models\\tree\\Twig_Opacity_Map.jpg");
+                        material_leaf->SetTexture(MaterialTextureType::Color, "project/models/tree/Twig_Base_Material_2.png");
+                        material_leaf->SetTexture(MaterialTextureType::Normal, "project/models/tree/Twig_Normal.png");
+                        material_leaf->SetTexture(MaterialTextureType::AlphaMask, "project/models/tree/Twig_Opacity_Map.jpg");
                         material_leaf->SetProperty(MaterialProperty::WindAnimation, 1.0f);
                         material_leaf->SetProperty(MaterialProperty::ColorVariationFromInstance, 1.0f);
                         material_leaf->SetProperty(MaterialProperty::SubsurfaceScattering, 1.0f);
                         material_leaf->SetResourceName("tree_leaf" + string(EXTENSION_MATERIAL));
 
                         material_body = make_shared<Material>();
-                        material_body->SetTexture(MaterialTextureType::Color, "project\\models\\tree\\tree_bark_diffuse.png");
-                        material_body->SetTexture(MaterialTextureType::Normal, "project\\models\\tree\\tree_bark_normal.png");
-                        material_body->SetTexture(MaterialTextureType::Roughness, "project\\models\\tree\\tree_bark_roughness.png");
+                        material_body->SetTexture(MaterialTextureType::Color, "project/models/tree/tree_bark_diffuse.png");
+                        material_body->SetTexture(MaterialTextureType::Normal, "project/models/tree/tree_bark_normal.png");
+                        material_body->SetTexture(MaterialTextureType::Roughness, "project/models/tree/tree_bark_roughness.png");
                         material_body->SetResourceName("tree_body" + string(EXTENSION_MATERIAL));
 
                         material_rock = make_shared<Material>();
-                        material_rock->SetTexture(MaterialTextureType::Color, "project\\models\\rock_2\\albedo.png");
-                        material_rock->SetTexture(MaterialTextureType::Normal, "project\\models\\rock_2\\normal.png");
-                        material_rock->SetTexture(MaterialTextureType::Roughness, "project\\models\\rock_2\\roughness.png");
-                        material_rock->SetTexture(MaterialTextureType::Occlusion, "project\\models\\rock_2\\occlusion.png");
+                        material_rock->SetTexture(MaterialTextureType::Color, "project/models/rock_2/albedo.png");
+                        material_rock->SetTexture(MaterialTextureType::Normal, "project/models/rock_2/normal.png");
+                        material_rock->SetTexture(MaterialTextureType::Roughness, "project/models/rock_2/roughness.png");
+                        material_rock->SetTexture(MaterialTextureType::Occlusion, "project/models/rock_2/occlusion.png");
                         material_rock->SetResourceName("rock" + string(EXTENSION_MATERIAL));
 
                         material_grass_blade = make_shared<Material>();
@@ -1235,11 +1235,11 @@ namespace spartan
             void create()
             {
                 // gran turismo 7 brand central music
-                entities::music("project\\music\\gran_turismo.wav");
+                entities::music("project/music/gran_turismo.wav");
                 
                 // textures
-                texture_brand_logo   = make_shared<RHI_Texture>("project\\models\\ferrari_laferrari\\logo.png");
-                texture_paint_normal = make_shared<RHI_Texture>("project\\models\\ferrari_laferrari\\paint_normal.png");
+                texture_brand_logo   = make_shared<RHI_Texture>("project/models/ferrari_laferrari/logo.png");
+                texture_paint_normal = make_shared<RHI_Texture>("project/models/ferrari_laferrari/paint_normal.png");
 
                 car::create(Vector3(0.0f, 0.08f, 0.0f), false, texture_paint_normal);
 
@@ -1260,7 +1260,7 @@ namespace spartan
                     mesh_flags          &= static_cast<uint32_t>(MeshFlags::ImportCombineMeshes);
                     mesh_flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessOptimize);     // don't reduce vertex/index count
                     mesh_flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessGenerateLods); // don't genereate and use LODs
-                    if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\ferrari_laferrari\\SpartanLaFerrariV2\\LaFerrariV2.gltf", mesh_flags))
+                    if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/ferrari_laferrari/SpartanLaFerrariV2/LaFerrariV2.gltf", mesh_flags))
                     {
                         Entity* floor_tube_lights = mesh->GetRootEntity();
                         floor_tube_lights->SetObjectName("tube_lights_and_floor");
@@ -1411,11 +1411,11 @@ namespace spartan
                 // shared material for surfaces
                 shared_ptr<Material> tile_material = make_shared<Material>();
                 tile_material->SetResourceName("floor_tile" + string(EXTENSION_MATERIAL));
-                tile_material->SetTexture(MaterialTextureType::Color,        "project\\materials\\tile_white\\albedo.png");
-                tile_material->SetTexture(MaterialTextureType::Normal,       "project\\materials\\tile_white\\normal.png");
-                tile_material->SetTexture(MaterialTextureType::Metalness,    "project\\materials\\tile_white\\metallic.png");
-                tile_material->SetTexture(MaterialTextureType::Roughness,    "project\\materials\\tile_white\\roughness.png");
-                tile_material->SetTexture(MaterialTextureType::Occlusion,    "project\\materials\\tile_white\\ao.png");
+                tile_material->SetTexture(MaterialTextureType::Color,        "project/materials/tile_white/albedo.png");
+                tile_material->SetTexture(MaterialTextureType::Normal,       "project/materials/tile_white/normal.png");
+                tile_material->SetTexture(MaterialTextureType::Metalness,    "project/materials/tile_white/metallic.png");
+                tile_material->SetTexture(MaterialTextureType::Roughness,    "project/materials/tile_white/roughness.png");
+                tile_material->SetTexture(MaterialTextureType::Occlusion,    "project/materials/tile_white/ao.png");
                 tile_material->SetProperty(MaterialProperty::WorldSpaceUv,   1.0f);
                 tile_material->SetProperty(MaterialProperty::TextureTilingX, 0.25);
                 tile_material->SetProperty(MaterialProperty::TextureTilingY, 0.25);
@@ -1424,7 +1424,7 @@ namespace spartan
                 Entity* entity_pool_light = nullptr;
                 uint32_t flags  = Mesh::GetDefaultFlags() | static_cast<uint32_t>(MeshFlags::ImportCombineMeshes);
                 flags          &= ~static_cast<uint32_t>(MeshFlags::PostProcessGenerateLods); // already very simple
-                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project\\models\\pool_light\\pool_light.blend", flags))
+                if (shared_ptr<Mesh> mesh = ResourceCache::Load<Mesh>("project/models/pool_light/pool_light.blend", flags))
                 {
                     entity_pool_light = mesh->GetRootEntity();
                     entity_pool_light->SetObjectName("pool_light");
@@ -1442,7 +1442,7 @@ namespace spartan
                     // inner light paraboloid
                     shared_ptr<Material> material_paraboloid = make_shared<Material>();
                     material_paraboloid->SetResourceName("material_paraboloid" + string(EXTENSION_MATERIAL));
-                    material_paraboloid->SetTexture(MaterialTextureType::Emission, "project\\models\\pool_light\\emissive.png");
+                    material_paraboloid->SetTexture(MaterialTextureType::Emission, "project/models/pool_light/emissive.png");
                     material_paraboloid->SetProperty(MaterialProperty::Roughness, 0.5f);
                     material_paraboloid->SetProperty(MaterialProperty::Metalness, 1.0f);
                     entity_pool_light->GetChildByName("Circle.001")->GetComponent<Renderable>()->SetMaterial(material_paraboloid);
@@ -1472,7 +1472,7 @@ namespace spartan
                 entity_hum->SetObjectName("audio_hum_electric");
                 entity_hum->SetParent(default_camera);
                 AudioSource* audio_source = entity_hum->AddComponent<AudioSource>();
-                audio_source->SetAudioClip("project\\music\\hum_electric.wav");
+                audio_source->SetAudioClip("project/music/hum_electric.wav");
                 audio_source->SetLoop(true);
                 audio_source->SetVolume(0.25f);
             
@@ -1481,7 +1481,7 @@ namespace spartan
                 entity_tiles->SetObjectName("audio_footsteps_tiles");
                 entity_tiles->SetParent(default_camera);
                 AudioSource* audio_source_tiles = entity_tiles->AddComponent<AudioSource>();
-                audio_source_tiles->SetAudioClip("project\\music\\footsteps_tiles.wav");
+                audio_source_tiles->SetAudioClip("project/music/footsteps_tiles.wav");
                 audio_source_tiles->SetPlayOnStart(false);
             
                 // water footsteps
@@ -1489,7 +1489,7 @@ namespace spartan
                 entity_water->SetObjectName("audio_footsteps_water");
                 entity_water->SetParent(default_camera);
                 AudioSource* audio_source_water = entity_water->AddComponent<AudioSource>();
-                audio_source_water->SetAudioClip("project\\music\\footsteps_water.wav");
+                audio_source_water->SetAudioClip("project/music/footsteps_water.wav");
                 audio_source_water->SetPlayOnStart(false);
 
                 // constants

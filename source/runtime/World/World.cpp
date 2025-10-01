@@ -112,7 +112,7 @@ namespace spartan
         string world_file_path_to_resource_directory(const string& world_file_path)
         {
             const string world_name = FileSystem::GetFileNameWithoutExtensionFromFilePath(world_file_path);
-            return FileSystem::GetDirectoryFromFilePath(world_file_path) + "\\" + world_name + "_resources\\";
+            return FileSystem::GetDirectoryFromFilePath(world_file_path) + "/" + world_name + "_resources/";
         }
     }
 
