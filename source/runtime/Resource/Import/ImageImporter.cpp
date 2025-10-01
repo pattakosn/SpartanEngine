@@ -82,7 +82,7 @@ namespace spartan
         
                         // copy the string data after the 12-byte header of the 'desc' tag, up to 255 chars safely
                         uint32_t string_len = min(255u, tag_size - 12);
-                        strncpy_s(tag_data, sizeof(tag_data), reinterpret_cast<char*>(icc + tag_ofs + 12), string_len);
+                        memcpy(tag_data, reinterpret_cast<char*>(icc + tag_ofs + 12), string_len);
                         tag_data[string_len] = '\0'; // ensure null termination
         
                         // check for sRGB profile names

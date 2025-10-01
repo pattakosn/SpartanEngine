@@ -53,8 +53,6 @@ namespace spartan::math
 
     string Vector4::ToString() const
     {
-        char tempBuffer[200];
-        sprintf_s(tempBuffer, sizeof(tempBuffer), "X:%f, Y:%f, Z:%f, W:%f", x, y, z, w);
-        return string(tempBuffer);
+        return "X:" + std::to_string(x) + ", Y:" + std::to_string(y) + ", Z:" + std::to_string(z) + ", W:" + std::to_string(w);
     }
 }

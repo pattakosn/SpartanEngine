@@ -42,9 +42,7 @@ namespace spartan::math
 
     string Vector3::ToString() const
     {
-        char buffer[200];
-        sprintf_s(buffer, sizeof(buffer), "X:%f, Y:%f, Z:%f", x, y, z);
-        return string(buffer);
+        return "X:" + std::to_string(x) + ", Y:" + std::to_string(y) + ", Z:" + std::to_string(z);
     }
 
     Vector3::Vector3(const Vector4& vector)

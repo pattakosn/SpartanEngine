@@ -188,8 +188,11 @@ namespace spartan
             FileSystem::CreateDirectory_(directory);
         }
 
+#ifdef _WIN32
         strcpy_s(m_project_directory, sizeof(m_project_directory), directory);
-        m_project_directory[sizeof(m_project_directory) - 1] = '\0'; // ensure null-termination
+#else
+        snprintf(m_project_directory, sizeof(m_project_directory), "%s", directory);
+#endif
     }
 
     string ResourceCache::GetProjectDirectoryAbsolute()
