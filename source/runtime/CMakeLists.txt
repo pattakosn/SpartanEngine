@@ -41,8 +41,47 @@ find_package(SDL3 REQUIRED CONFIG) #REQUIRED COMPONENTS SDL3-shared)
 message(STATUS "[spartan] SDL3-${SDL3_VERSION}")
 find_package(spirv_cross_c_shared REQUIRED)
 find_package(Vulkan REQUIRED REQUIRED COMPONENTS glslc dxc)
+#if(NOT DEFINED VULKAN_SDK)
+#    set(VULKAN_SDK $ENV{VULKAN_SDK})
+#endif()
+#
+#if(NOT VULKAN_SDK OR NOT EXISTS ${VULKAN_SDK})
+#    message(FATAL_ERROR "VULKAN_SDK not found: ${VULKAN_SDK}")
+#endif()
+#add_library(spirv-cross-core STATIC IMPORTED)
+#set_target_properties(spirv-cross-core PROPERTIES IMPORTED_LOCATION ${VULKAN_SDK}/lib/libspirv-cross-core.a)
+#
+#add_library(spirv-cross-glsl STATIC IMPORTED)
+#set_target_properties(spirv-cross-glsl PROPERTIES IMPORTED_LOCATION ${VULKAN_SDK}/lib/libspirv-cross-glsl.a)
+#
+#add_library(spirv-cross-cpp STATIC IMPORTED)
+#set_target_properties(spirv-cross-cpp PROPERTIES IMPORTED_LOCATION ${VULKAN_SDK}/lib/libspirv-cross-cpp.a)
+#
+#add_library(spirv-cross-c STATIC IMPORTED)
+#set_target_properties(spirv-cross-c PROPERTIES IMPORTED_LOCATION ${VULKAN_SDK}/lib/libspirv-cross-c.a)
+#
+#add_library(spirv-cross-hlsl STATIC IMPORTED)
+#set_target_properties(spirv-cross-hlsl PROPERTIES IMPORTED_LOCATION ${VULKAN_SDK}/lib/libspirv-cross-hlsl.a)
 
-foreach(DIR Commands Core Display FileSystem Font Game Geometry Input IO Logging Math Physics Profiling Rendering Resource World)
+
+#set(PHYSX_ROOT_DIR "/opt/physx")
+#add_library(PhysX::Foundation SHARED IMPORTED)
+#set_target_properties(PhysX::Foundation PROPERTIES
+#    IMPORTED_LOCATION "${PHYSX_ROOT_DIR}/lib/libPhysXFoundation_64.so"
+#    INTERFACE_INCLUDE_DIRECTORIES "${PHYSX_ROOT_DIR}/include"
+#)
+#add_library(PhysX::Common SHARED IMPORTED)
+#set_target_properties(PhysX::Common PROPERTIES
+#    IMPORTED_LOCATION "${PHYSX_ROOT_DIR}/lib/libPhysXCommon_64.so"
+#    INTERFACE_INCLUDE_DIRECTORIES "${PHYSX_ROOT_DIR}/include"
+#)
+#add_library(PhysX::PhysX SHARED IMPORTED)
+#set_target_properties(PhysX::PhysX PROPERTIES
+#    IMPORTED_LOCATION "${PHYSX_ROOT_DIR}/lib/libPhysX_64.so"
+#    INTERFACE_INCLUDE_DIRECTORIES "${PHYSX_ROOT_DIR}/include"
+#)
+
+foreach(DIR Commands Core Display FileSystem Font Game Geometry Input IO Logging Math Memory Physics Profiling Rendering Resource World)
   file(GLOB_RECURSE RUNTIME_SRC_${DIR} CONFIGURE_DEPENDS ${DIR}/*.cpp)
   list(APPEND RUNTIME_SRC ${RUNTIME_SRC_${DIR}})
 
@@ -60,11 +99,12 @@ list(APPEND RUNTIME_HEADER ${RUNTIME_HEADER_RHI})
 if (MSVC)
     set(LIBRARY_TYPE STATIC)
 else()
-    set(LIBRARY_TYPE SHARED)
+  set(LIBRARY_TYPE STATIC)
 endif()
 add_library(runtime ${LIBRARY_TYPE} ${RUNTIME_SRC} ${RUNTIME_HEADER})
 
-target_precompile_headers(runtime PRIVATE Core/pch.h)
+#target_precompile_headers(runtime PRIVATE Core/pch.h)
+set(VCPKG_ROOT "$ENV{HOME}/github.com/vcpkg/installed/x64-linux")
 
 target_include_directories(runtime
   PUBLIC
@@ -73,7 +113,8 @@ target_include_directories(runtime
     ${spartan_SOURCE_DIR}/third_party/free_image # fucking FreeImage/Utilities.h is not in upstream install, do not know why
   PRIVATE
     ${BULLET_INCLUDE_DIR}
-
+    ${VCPKG_ROOT}/include
+    ${VCPKG_ROOT}/include/physx
 )
 #TODO add parameter for API_GRAPHICS_D3D12 instead of API_GRAPHICS_VULKAN
 target_compile_definitions(runtime PUBLIC
@@ -89,6 +130,24 @@ target_link_libraries(runtime
   PUBLIC
     PkgConfig::FREETYPE2
     SDL3::SDL3
+    #${VCPKG_ROOT}/lib/libPhysXFoundation_64.so
+    #${VCPKG_ROOT}/lib/libPhysXCommon_64.so
+    #${VCPKG_ROOT}/lib/libPhysX_64.so
+    #${VCPKG_ROOT}/lib/libPhysXExtensions_64.so
+    #${VCPKG_ROOT}/lib/libPhysXCooking_64.so
+    #${VCPKG_ROOT}/lib/libPhysXCharacterKinematic_64.so
+    #pthread
+    #dl
+    -Wl,--start-group
+    ${VCPKG_ROOT}/lib/libPhysXFoundation_static_64.a
+    ${VCPKG_ROOT}/lib/libPhysXCommon_static_64.a
+    ${VCPKG_ROOT}/lib/libPhysX_static_64.a
+    ${VCPKG_ROOT}/lib/libPhysXExtensions_static_64.a
+    ${VCPKG_ROOT}/lib/libPhysXCooking_static_64.a
+    ${VCPKG_ROOT}/lib/libPhysXCharacterKinematic_static_64.a
+    -Wl,--end-group
+    pthread
+    dl
   PRIVATE
     assimp::assimp
     ${BULLET_LIBRARIES}
