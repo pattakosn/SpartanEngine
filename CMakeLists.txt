@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.30)
 project(spartan
         VERSION 0.3.3
         DESCRIPTION "Panos Karambelas' awesome 3D engine"
@@ -30,7 +30,7 @@ if(EXISTS "${LOC_PATH}")
   message(FATAL_ERROR "[spartan] You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
 endif()
 
-# Release build by default, Debug optionally.
+# debug build by default, release optionally.
 set(default_build_type "Debug")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "[spartan] Setting build type to '${default_build_type}' as none was specified.")
@@ -78,23 +78,23 @@ else()
 endif()
 
 set(API_GRAPHICS_VULKAN "API_GRAPHICS_VULKAN")
-set(API_GRAPHICS_D3D12 "API_GRAPHICS_D3D12")
+#set(API_GRAPHICS_D3D12 "API_GRAPHICS_D3D12")
 set(DEFAULT_API_GRAPHICS ${API_GRAPHICS_VULKAN})
 set(API_GRAPHICS_USED ${DEFAULT_API_GRAPHICS} CACHE STRING "spartan supports Vulkan on Windows or Linux and DX12 on Windows.Will by default build for Vulkan")
 if(UNIX)
     set_property(CACHE API_GRAPHICS_USED PROPERTY STRINGS ${API_GRAPHICS_VULKAN})
 elseif(WIN32)
-    set_property(CACHE API_GRAPHICS_USED PROPERTY STRINGS ${API_GRAPHICS_VULKAN} ${API_GRAPHICS_D3D12})
+    set_property(CACHE API_GRAPHICS_USED PROPERTY STRINGS ${API_GRAPHICS_VULKAN})# ${API_GRAPHICS_D3D12})
 endif()
 if(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_VULKAN")
     message(STATUS "[spartan] Vulkan build")
-elseif(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_D3D12")
-    message(STATUS "[spartan] D3D12 build")
+#elseif(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_D3D12")
+#    message(STATUS "[spartan] D3D12 build")
 endif()# Append _vulkan or _d3d12 to the executable name based on the selected graphics API
 if(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_VULKAN")
     set(EXECUTABLE_SUFFIX "_vulkan")
-elseif(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_D3D12")
-    set(EXECUTABLE_SUFFIX "_d3d12")
+#elseif(API_GRAPHICS_USED STREQUAL "API_GRAPHICS_D3D12")
+#    set(EXECUTABLE_SUFFIX "_d3d12")
 else()
     message(FATAL_ERROR "[spartan] Invalid API_GRAPHICS_USED value")
 endif()
