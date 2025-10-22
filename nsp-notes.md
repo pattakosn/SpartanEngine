@@ -1,3 +1,6 @@
+building physx required: libglapi-mesa
+
+
 conan:
     assimp
     bullet
